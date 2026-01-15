@@ -1,0 +1,190 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Parking\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AFE487A7-6C79-9DF7-0070-6E5D9A9142E1}|Parking.Domain\\Parking.Domain.csproj|c:\\parking\\parking.domain\\services\\parkingfeecalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFE487A7-6C79-9DF7-0070-6E5D9A9142E1}|Parking.Domain\\Parking.Domain.csproj|solutionrelative:parking.domain\\services\\parkingfeecalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFE487A7-6C79-9DF7-0070-6E5D9A9142E1}|Parking.Domain\\Parking.Domain.csproj|c:\\parking\\parking.domain\\valueobjects\\hourlyrate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFE487A7-6C79-9DF7-0070-6E5D9A9142E1}|Parking.Domain\\Parking.Domain.csproj|solutionrelative:parking.domain\\valueobjects\\hourlyrate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFE487A7-6C79-9DF7-0070-6E5D9A9142E1}|Parking.Domain\\Parking.Domain.csproj|c:\\parking\\parking.domain\\entities\\parkingsession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFE487A7-6C79-9DF7-0070-6E5D9A9142E1}|Parking.Domain\\Parking.Domain.csproj|solutionrelative:parking.domain\\entities\\parkingsession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A59532B9-B875-1A4C-B7C0-E9E2F7D566A4}|Parking.Application\\Parking.Application.csproj|c:\\parking\\parking.application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A59532B9-B875-1A4C-B7C0-E9E2F7D566A4}|Parking.Application\\Parking.Application.csproj|solutionrelative:parking.application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A59532B9-B875-1A4C-B7C0-E9E2F7D566A4}|Parking.Application\\Parking.Application.csproj|c:\\parking\\parking.application\\interfaces\\services\\ipricingpolicy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A59532B9-B875-1A4C-B7C0-E9E2F7D566A4}|Parking.Application\\Parking.Application.csproj|solutionrelative:parking.application\\interfaces\\services\\ipricingpolicy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A59532B9-B875-1A4C-B7C0-E9E2F7D566A4}|Parking.Application\\Parking.Application.csproj|c:\\parking\\parking.application\\services\\parkingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A59532B9-B875-1A4C-B7C0-E9E2F7D566A4}|Parking.Application\\Parking.Application.csproj|solutionrelative:parking.application\\services\\parkingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 21,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{809f6ff3-8092-454a-8003-6d4091f9b5bb}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{809f6ff3-8092-454a-8003-6d4091f9b5bb}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{809f6ff3-8092-454a-8003-6d4091f9b5bb}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:13:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:15:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:16:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:17:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:18:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:14:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:19:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:23:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:24:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:25:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:20:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:21:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:11:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Parking\\Parking.Application\\Class1.cs",
+              "RelativeDocumentMoniker": "Parking.Application\\Class1.cs",
+              "ToolTip": "C:\\Parking\\Parking.Application\\Class1.cs",
+              "RelativeToolTip": "Parking.Application\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T20:38:38.447Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IPricingPolicy.cs",
+              "DocumentMoniker": "C:\\Parking\\Parking.Application\\Interfaces\\Services\\IPricingPolicy.cs",
+              "RelativeDocumentMoniker": "Parking.Application\\Interfaces\\Services\\IPricingPolicy.cs",
+              "ToolTip": "C:\\Parking\\Parking.Application\\Interfaces\\Services\\IPricingPolicy.cs",
+              "RelativeToolTip": "Parking.Application\\Interfaces\\Services\\IPricingPolicy.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T20:37:21.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ParkingSession.cs",
+              "DocumentMoniker": "C:\\Parking\\Parking.Domain\\Entities\\ParkingSession.cs",
+              "RelativeDocumentMoniker": "Parking.Domain\\Entities\\ParkingSession.cs",
+              "ToolTip": "C:\\Parking\\Parking.Domain\\Entities\\ParkingSession.cs",
+              "RelativeToolTip": "Parking.Domain\\Entities\\ParkingSession.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAcwCcAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T20:33:44.822Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HourlyRate.cs",
+              "DocumentMoniker": "C:\\Parking\\Parking.Domain\\ValueObjects\\HourlyRate.cs",
+              "RelativeDocumentMoniker": "Parking.Domain\\ValueObjects\\HourlyRate.cs",
+              "ToolTip": "C:\\Parking\\Parking.Domain\\ValueObjects\\HourlyRate.cs",
+              "RelativeToolTip": "Parking.Domain\\ValueObjects\\HourlyRate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T20:29:24.463Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ParkingFeeCalculator.cs",
+              "DocumentMoniker": "C:\\Parking\\Parking.Domain\\Services\\ParkingFeeCalculator.cs",
+              "RelativeDocumentMoniker": "Parking.Domain\\Services\\ParkingFeeCalculator.cs",
+              "ToolTip": "C:\\Parking\\Parking.Domain\\Services\\ParkingFeeCalculator.cs",
+              "RelativeToolTip": "Parking.Domain\\Services\\ParkingFeeCalculator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T20:25:27.946Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ParkingService.cs",
+              "DocumentMoniker": "C:\\Parking\\Parking.Application\\Services\\ParkingService.cs",
+              "RelativeDocumentMoniker": "Parking.Application\\Services\\ParkingService.cs",
+              "ToolTip": "C:\\Parking\\Parking.Application\\Services\\ParkingService.cs",
+              "RelativeToolTip": "Parking.Application\\Services\\ParkingService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T20:20:41.293Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

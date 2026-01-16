@@ -1,14 +1,23 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Parking.Infrastructure.Persistence;
+using Parking.Application.Interfaces.Repositories;
+using Parking.Infrastructure.Context;
 
 namespace Parking.Infrastructure.Repositories;
 
-public class Repository<T>(ParkingDbContext context) : IRepository<T> where T : class
+public class Repository<T> : IRepository<T> where T : class
 {
-    protected readonly ParkingDbContext _context = context;
+    protected readonly ParkingDbContext _context;
+
+    public Repository(ParkingDbContext context)
+    {
+        _context = context;
+    }
 
     public async Task AddAsync(T entity)
-        => await _context.Set<T>().AddAsync(entity);
+    {
+        await _context.Set<T>().AddAsync(entity);
+        await _context.SaveChangesAsync();
+    }
 
     public async Task<T?> GetByIdAsync(Guid id)
         => await _context.Set<T>().FindAsync(id);
@@ -16,9 +25,9 @@ public class Repository<T>(ParkingDbContext context) : IRepository<T> where T : 
     public async Task<IEnumerable<T>> GetAllAsync()
         => await _context.Set<T>().ToListAsync();
 
-    public void Update(T entity)
-        => _context.Set<T>().Update(entity);
-
-    public void Remove(T entity)
-        => _context.Set<T>().Remove(entity);
+    public async Task UpdateAsync(T entity)
+    {
+        _context.Set<T>().Update(entity);
+        await _context.SaveChangesAsync();
+    }
 }

@@ -54,9 +54,9 @@ namespace Parking.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ParkingSessions_VehicleId",
+                name: "IX_ParkingSessions_VehicleId_ExitTime",
                 table: "ParkingSessions",
-                column: "VehicleId");
+                columns: new[] { "VehicleId", "ExitTime" });
         }
 
         /// <inheritdoc />

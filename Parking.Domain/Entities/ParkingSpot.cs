@@ -4,10 +4,10 @@ namespace Parking.Domain.Entities;
 
 public class ParkingSpot
 {
-    public Guid Id { get; private set; }
-    public string Code { get; private set; }
-    public ParkingSpotType Type { get; private set; }
-    public bool IsOccupied { get; private set; }
+    public Guid Id { get; set; }
+    public string Code { get; set; }
+    public ParkingSpotType Type { get; set; }
+    public bool IsOccupied { get; set; }
 
     protected ParkingSpot() { }
 
@@ -22,7 +22,7 @@ public class ParkingSpot
     public void Occupy()
     {
         if (IsOccupied)
-            throw new InvalidOperationException("Parking spot is already occupied");
+            throw new InvalidOperationException("Spot already occupied");
 
         IsOccupied = true;
     }

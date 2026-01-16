@@ -3,9 +3,18 @@ using Parking.Domain.ValueObjects;
 
 namespace Parking.Domain.Entities;
 
-public class Vehicle(LicensePlate licensePlate, VehicleType type)
+public class Vehicle
 {
-    public Guid Id { get; private set; } = Guid.NewGuid();
-    public LicensePlate LicensePlate { get; private set; } = licensePlate;
-    public VehicleType Type { get; private set; } = type;
+    public Guid Id { get; private set; }
+    public LicensePlate LicensePlate { get; private set; }
+    public VehicleType Type { get; private set; }
+
+    protected Vehicle() { }
+
+    public Vehicle(LicensePlate plate, VehicleType type)
+    {
+        Id = Guid.NewGuid();
+        LicensePlate = plate;
+        Type = type;
+    }
 }

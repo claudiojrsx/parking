@@ -1,32 +1,25 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Parking.Domain.Entities;
-using Parking.Infrastructure.Mappings;
+using Parking.Infrastructure.Seeds;
 
 namespace Parking.Infrastructure.Context;
 
-public class ParkingDbContext(DbContextOptions<ParkingDbContext> options) : DbContext(options)
+public class ParkingDbContext : DbContext
 {
+    public ParkingDbContext(DbContextOptions<ParkingDbContext> options)
+        : base(options)
+    {
+    }
+
     public DbSet<Vehicle> Vehicles => Set<Vehicle>();
     public DbSet<ParkingSpot> ParkingSpots => Set<ParkingSpot>();
     public DbSet<ParkingSession> ParkingSessions => Set<ParkingSession>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfiguration(new VehicleMap());
-        modelBuilder.ApplyConfiguration(new ParkingSpotMap());
-        modelBuilder.ApplyConfiguration(new ParkingSessionMap());
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ParkingDbContext).Assembly);
 
-        modelBuilder.Entity<Vehicle>(entity =>
-        {
-            entity.HasKey(v => v.Id);
-
-            entity.OwnsOne(v => v.LicensePlate, lp =>
-            {
-                lp.Property(p => p.Value)
-                  .HasColumnName("LicensePlate")
-                  .HasMaxLength(10)
-                  .IsRequired();
-            });
-        });
+        modelBuilder.Entity<ParkingSpot>()
+            .HasData(ParkingSpotSeed.Get());
     }
 }

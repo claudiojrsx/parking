@@ -1,46 +1,55 @@
 ﻿using Parking.Application.Interfaces.Repositories;
 using Parking.Domain.Entities;
+using Parking.Domain.Enums;
+using Parking.Domain.ValueObjects;
 
 namespace Parking.Application.Services;
 
 public class ParkingService
 {
-    private readonly IVehicleRepository _vehicleRepository;
-    private readonly IParkingSpotRepository _spotRepository;
-    private readonly IParkingSessionRepository _sessionRepository;
+    private readonly IVehicleRepository _vehicleRepo;
+    private readonly IParkingSpotRepository _spotRepo;
+    private readonly IParkingSessionRepository _sessionRepo;
 
     public ParkingService(
-        IVehicleRepository vehicleRepository,
-        IParkingSpotRepository spotRepository,
-        IParkingSessionRepository sessionRepository)
+        IVehicleRepository vehicleRepo,
+        IParkingSpotRepository spotRepo,
+        IParkingSessionRepository sessionRepo)
     {
-        _vehicleRepository = vehicleRepository;
-        _spotRepository = spotRepository;
-        _sessionRepository = sessionRepository;
+        _vehicleRepo = vehicleRepo;
+        _spotRepo = spotRepo;
+        _sessionRepo = sessionRepo;
     }
 
-    public async Task<Guid> StartParkingAsync(Guid vehicleId)
+    public async Task<Guid> CheckInAsync(string plate, VehicleType type)
     {
-        var spot = await _spotRepository.GetAvailableAsync()
-            ?? throw new InvalidOperationException("No available parking spots");
+        var licensePlate = new LicensePlate(plate);
+
+        var vehicle = await _vehicleRepo.GetByLicensePlateAsync(licensePlate)
+            ?? new Vehicle(licensePlate, type);
+
+        if (vehicle.Id == Guid.Empty)
+            await _vehicleRepo.AddAsync(vehicle);
+
+        var spot = await _spotRepo.GetAvailableAsync((ParkingSpotType)type)
+            ?? throw new InvalidOperationException("No available spot");
 
         spot.Occupy();
 
-        var session = new ParkingSession(vehicleId, spot.Id);
+        var session = new ParkingSession(vehicle.Id, spot.Id);
 
-        await _spotRepository.UpdateAsync(spot);
-        await _sessionRepository.AddAsync(session);
+        await _spotRepo.UpdateAsync(spot);
+        await _sessionRepo.AddAsync(session);
 
         return session.Id;
     }
 
-    public async Task EndParkingAsync(Guid vehicleId)
+    public async Task CheckOutAsync(Guid vehicleId)
     {
-        var session = await _sessionRepository.GetActiveByVehicleIdAsync(vehicleId)
-            ?? throw new InvalidOperationException("Active parking session not found");
+        var session = await _sessionRepo.GetActiveByVehicleIdAsync(vehicleId)
+            ?? throw new InvalidOperationException("Active session not found");
 
-        session.CloseSession();
-
-        await _sessionRepository.UpdateAsync(session);
+        session.Close();
+        await _sessionRepo.UpdateAsync(session);
     }
 }

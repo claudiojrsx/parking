@@ -1,8 +1,9 @@
-﻿public interface IRepository<T> where T : class
+﻿namespace Parking.Application.Interfaces.Repositories;
+
+public interface IRepository<T> where T : class
 {
+    Task AddAsync(T entity);
     Task<T?> GetByIdAsync(Guid id);
     Task<IEnumerable<T>> GetAllAsync();
-    Task AddAsync(T entity);
-    void Update(T entity);
-    void Remove(T entity);
+    Task UpdateAsync(T entity);
 }

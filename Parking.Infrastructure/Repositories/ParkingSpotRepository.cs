@@ -1,28 +1,24 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Parking.Application.Interfaces.Repositories;
 using Parking.Domain.Entities;
+using Parking.Domain.Enums;
 using Parking.Infrastructure.Context;
 
 namespace Parking.Infrastructure.Repositories;
 
-public class ParkingSpotRepository : IParkingSpotRepository
+public class ParkingSpotRepository
+    : Repository<ParkingSpot>, IParkingSpotRepository
 {
-    private readonly ParkingDbContext _context;
-
     public ParkingSpotRepository(ParkingDbContext context)
+        : base(context)
     {
-        _context = context;
     }
 
-    public async Task<ParkingSpot?> GetAvailableAsync()
+    public async Task<ParkingSpot?> GetAvailableAsync(ParkingSpotType type)
     {
         return await _context.ParkingSpots
-            .FirstOrDefaultAsync(p => !p.IsOccupied);
-    }
-
-    public async Task UpdateAsync(ParkingSpot parkingSpot)
-    {
-        _context.ParkingSpots.Update(parkingSpot);
-        await _context.SaveChangesAsync();
+            .FirstOrDefaultAsync(p =>
+                !p.IsOccupied &&
+                p.Type == type);
     }
 }

@@ -8,16 +8,13 @@ public class ParkingSessionMap : IEntityTypeConfiguration<ParkingSession>
 {
     public void Configure(EntityTypeBuilder<ParkingSession> builder)
     {
-        builder.ToTable("ParkingSessions");
+        builder.HasKey(s => s.Id);
 
-        builder.HasKey(p => p.Id);
-
-        builder.Property(p => p.EntryTime)
+        builder.Property(s => s.EntryTime)
                .IsRequired();
 
-        builder.Property(p => p.ExitTime);
+        builder.Property(s => s.ExitTime);
 
-        builder.HasIndex(p => p.VehicleId)
-               .IsUnique(false);
+        builder.HasIndex(s => new { s.VehicleId, s.ExitTime });
     }
 }

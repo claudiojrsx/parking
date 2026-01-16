@@ -8,13 +8,11 @@ public class ParkingSpotMap : IEntityTypeConfiguration<ParkingSpot>
 {
     public void Configure(EntityTypeBuilder<ParkingSpot> builder)
     {
-        builder.ToTable("ParkingSpots");
-
         builder.HasKey(p => p.Id);
 
         builder.Property(p => p.Code)
-               .HasMaxLength(20)
-               .IsRequired();
+               .IsRequired()
+               .HasMaxLength(20);
 
         builder.Property(p => p.Type)
                .IsRequired();

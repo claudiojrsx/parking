@@ -3,10 +3,7 @@ using Parking.Domain.Enums;
 
 namespace Parking.Application.Interfaces.Repositories;
 
-public interface IParkingSpotRepository
+public interface IParkingSpotRepository : IRepository<ParkingSpot>
 {
-    Task<ParkingSpot?> GetAvailableAsync();
-    Task UpdateAsync(ParkingSpot parkingSpot);
-    Task<ParkingSpot?> GetAvailableSpotAsync(VehicleType type);
-
+    Task<ParkingSpot?> GetAvailableAsync(ParkingSpotType type);
 }

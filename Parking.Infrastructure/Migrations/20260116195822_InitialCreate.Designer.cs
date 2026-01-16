@@ -12,7 +12,7 @@ using Parking.Infrastructure.Context;
 namespace Parking.Infrastructure.Migrations
 {
     [DbContext(typeof(ParkingDbContext))]
-    [Migration("20260116130134_InitialCreate")]
+    [Migration("20260116195822_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -45,9 +45,9 @@ namespace Parking.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("VehicleId");
+                    b.HasIndex("VehicleId", "ExitTime");
 
-                    b.ToTable("ParkingSessions", (string)null);
+                    b.ToTable("ParkingSessions");
                 });
 
             modelBuilder.Entity("Parking.Domain.Entities.ParkingSpot", b =>
@@ -69,7 +69,7 @@ namespace Parking.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ParkingSpots", (string)null);
+                    b.ToTable("ParkingSpots");
                 });
 
             modelBuilder.Entity("Parking.Domain.Entities.Vehicle", b =>
@@ -83,7 +83,7 @@ namespace Parking.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Vehicles", (string)null);
+                    b.ToTable("Vehicles");
                 });
 
             modelBuilder.Entity("Parking.Domain.Entities.Vehicle", b =>

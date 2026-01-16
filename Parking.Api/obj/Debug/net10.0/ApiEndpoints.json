@@ -1,1 +1,34 @@
-[]
+[
+  {
+    "ContainingType": "Parking.Api.Controllers.ParkingController",
+    "Method": "CheckIn",
+    "RelativePath": "api/parking/check-in",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Parking.Api.DTOs.CheckInRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Parking.Api.Controllers.ParkingController",
+    "Method": "CheckOut",
+    "RelativePath": "api/parking/check-out/{vehicleId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "vehicleId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

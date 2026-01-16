@@ -42,9 +42,9 @@ namespace Parking.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("VehicleId");
+                    b.HasIndex("VehicleId", "ExitTime");
 
-                    b.ToTable("ParkingSessions", (string)null);
+                    b.ToTable("ParkingSessions");
                 });
 
             modelBuilder.Entity("Parking.Domain.Entities.ParkingSpot", b =>
@@ -66,7 +66,44 @@ namespace Parking.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ParkingSpots", (string)null);
+                    b.ToTable("ParkingSpots");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("11111111-1111-1111-1111-111111111111"),
+                            Code = "M-01",
+                            IsOccupied = false,
+                            Type = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("11111111-1111-1111-1111-111111111112"),
+                            Code = "M-02",
+                            IsOccupied = false,
+                            Type = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("22222222-2222-2222-2222-222222222221"),
+                            Code = "C-01",
+                            IsOccupied = false,
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("22222222-2222-2222-2222-222222222222"),
+                            Code = "C-02",
+                            IsOccupied = false,
+                            Type = 2
+                        },
+                        new
+                        {
+                            Id = new Guid("33333333-3333-3333-3333-333333333331"),
+                            Code = "T-01",
+                            IsOccupied = false,
+                            Type = 3
+                        });
                 });
 
             modelBuilder.Entity("Parking.Domain.Entities.Vehicle", b =>
@@ -80,7 +117,7 @@ namespace Parking.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Vehicles", (string)null);
+                    b.ToTable("Vehicles");
                 });
 
             modelBuilder.Entity("Parking.Domain.Entities.Vehicle", b =>

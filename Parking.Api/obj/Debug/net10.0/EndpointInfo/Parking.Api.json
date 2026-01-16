@@ -1,16 +1,94 @@
 {
-  "openapi": "3.1.1",
+  "openapi": "3.0.4",
   "info": {
-    "title": "Parking.Api | v1",
-    "version": "1.0.0"
+    "title": "Parking.Api",
+    "version": "1.0"
   },
-  "servers": [
-    {
-      "url": "https://localhost:7097"
+  "paths": {
+    "/api/parking/check-in": {
+      "post": {
+        "tags": [
+          "Parking"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckInRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckInRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckInRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     },
-    {
-      "url": "http://localhost:5044"
+    "/api/parking/check-out/{vehicleId}": {
+      "post": {
+        "tags": [
+          "Parking"
+        ],
+        "parameters": [
+          {
+            "name": "vehicleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
-  ],
-  "paths": { }
+  },
+  "components": {
+    "schemas": {
+      "CheckInRequest": {
+        "type": "object",
+        "properties": {
+          "plate": {
+            "type": "string",
+            "nullable": true
+          },
+          "vehicleType": {
+            "$ref": "#/components/schemas/VehicleType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "VehicleType": {
+        "enum": [
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Parking"
+    }
+  ]
 }

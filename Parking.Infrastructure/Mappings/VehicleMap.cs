@@ -8,8 +8,6 @@ public class VehicleMap : IEntityTypeConfiguration<Vehicle>
 {
     public void Configure(EntityTypeBuilder<Vehicle> builder)
     {
-        builder.ToTable("Vehicles");
-
         builder.HasKey(v => v.Id);
 
         builder.OwnsOne(v => v.LicensePlate, lp =>

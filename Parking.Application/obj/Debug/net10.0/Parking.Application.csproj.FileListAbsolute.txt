@@ -1,0 +1,16 @@
+C:\Parking\Parking.Application\bin\Debug\net10.0\Parking.Application.deps.json
+C:\Parking\Parking.Application\bin\Debug\net10.0\Parking.Application.dll
+C:\Parking\Parking.Application\bin\Debug\net10.0\Parking.Application.pdb
+C:\Parking\Parking.Application\bin\Debug\net10.0\Parking.Domain.dll
+C:\Parking\Parking.Application\bin\Debug\net10.0\Parking.Domain.pdb
+C:\Parking\Parking.Application\obj\Debug\net10.0\Parking.Application.csproj.AssemblyReference.cache
+C:\Parking\Parking.Application\obj\Debug\net10.0\Parking.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Parking\Parking.Application\obj\Debug\net10.0\Parking.Application.AssemblyInfoInputs.cache
+C:\Parking\Parking.Application\obj\Debug\net10.0\Parking.Application.AssemblyInfo.cs
+C:\Parking\Parking.Application\obj\Debug\net10.0\Parking.Application.csproj.CoreCompileInputs.cache
+C:\Parking\Parking.Application\obj\Debug\net10.0\Parking.Application.sourcelink.json
+C:\Parking\Parking.Application\obj\Debug\net10.0\Parking..95985C1F.Up2Date
+C:\Parking\Parking.Application\obj\Debug\net10.0\Parking.Application.dll
+C:\Parking\Parking.Application\obj\Debug\net10.0\refint\Parking.Application.dll
+C:\Parking\Parking.Application\obj\Debug\net10.0\Parking.Application.pdb
+C:\Parking\Parking.Application\obj\Debug\net10.0\ref\Parking.Application.dll

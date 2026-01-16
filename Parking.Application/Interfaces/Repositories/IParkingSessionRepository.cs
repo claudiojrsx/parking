@@ -2,9 +2,9 @@
 
 namespace Parking.Application.Interfaces.Repositories;
 
-public interface IParkingSessionRepository
+public interface IParkingSessionRepository : IRepository<ParkingSession>
 {
-    Task AddAsync(ParkingSession session);
-    Task<ParkingSession?> GetActiveByVehicleIdAsync(Guid vehicleId);
-    Task UpdateAsync(ParkingSession session);
+    Task<ParkingSession?> GetActiveSessionByPlateAsync(string plate);
+    Task<IEnumerable<ParkingSession>> GetByPeriodAsync(DateTime start, DateTime end);
+    Task<ParkingSession?> GetActiveSessionByVehicleIdAsync(Guid vehicleId);
 }

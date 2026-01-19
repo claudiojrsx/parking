@@ -18,6 +18,7 @@ public class ParkingSpotRepository
     {
         return await _context.ParkingSpots
             .FirstOrDefaultAsync(p =>
+                p.IsActive &&
                 !p.IsOccupied &&
                 p.Type == type);
     }

@@ -12,8 +12,8 @@ using Parking.Infrastructure.Context;
 namespace Parking.Infrastructure.Migrations
 {
     [DbContext(typeof(ParkingDbContext))]
-    [Migration("20260116200845_SeedParkingSpots")]
-    partial class SeedParkingSpots
+    [Migration("20260119204148_UpdateAdminPasswordHash")]
+    partial class UpdateAdminPasswordHash
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,6 +61,9 @@ namespace Parking.Infrastructure.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsOccupied")
                         .HasColumnType("bit");
 
@@ -70,42 +73,68 @@ namespace Parking.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ParkingSpots");
+                });
+
+            modelBuilder.Entity("Parking.Domain.Entities.Role", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roles", (string)null);
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("11111111-1111-1111-1111-111111111111"),
-                            Code = "M-01",
-                            IsOccupied = false,
-                            Type = 1
-                        },
+                            Id = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
+                            Name = "Admin"
+                        });
+                });
+
+            modelBuilder.Entity("Parking.Domain.Entities.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("Users", (string)null);
+
+                    b.HasData(
                         new
                         {
-                            Id = new Guid("11111111-1111-1111-1111-111111111112"),
-                            Code = "M-02",
-                            IsOccupied = false,
-                            Type = 1
-                        },
-                        new
-                        {
-                            Id = new Guid("22222222-2222-2222-2222-222222222221"),
-                            Code = "C-01",
-                            IsOccupied = false,
-                            Type = 2
-                        },
-                        new
-                        {
-                            Id = new Guid("22222222-2222-2222-2222-222222222222"),
-                            Code = "C-02",
-                            IsOccupied = false,
-                            Type = 2
-                        },
-                        new
-                        {
-                            Id = new Guid("33333333-3333-3333-3333-333333333331"),
-                            Code = "T-01",
-                            IsOccupied = false,
-                            Type = 3
+                            Id = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"),
+                            Email = "admin@parking.com",
+                            Name = "System Admin",
+                            PasswordHash = "$2b$10$pvVtvha0LggnboHgBUA6J.kWPgprV2QsIBeXuhSI0hplO5mSeWJGa",
+                            RoleId = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa")
                         });
                 });
 
@@ -121,6 +150,46 @@ namespace Parking.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Vehicles");
+                });
+
+            modelBuilder.Entity("Parking.Infrastructure.Entities.PricingConfiguration", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("CarHourlyRate")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("MotorcycleHourlyRate")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
+
+                    b.Property<decimal>("TruckHourlyRate")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PricingConfigurations");
+                });
+
+            modelBuilder.Entity("Parking.Domain.Entities.User", b =>
+                {
+                    b.HasOne("Parking.Domain.Entities.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("Parking.Domain.Entities.Vehicle", b =>

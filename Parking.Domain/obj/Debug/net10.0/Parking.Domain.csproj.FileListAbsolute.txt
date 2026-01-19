@@ -10,3 +10,4 @@ C:\Parking\Parking.Domain\obj\Debug\net10.0\Parking.Domain.dll
 C:\Parking\Parking.Domain\obj\Debug\net10.0\refint\Parking.Domain.dll
 C:\Parking\Parking.Domain\obj\Debug\net10.0\Parking.Domain.pdb
 C:\Parking\Parking.Domain\obj\Debug\net10.0\ref\Parking.Domain.dll
+C:\Parking\Parking.Domain\obj\Debug\net10.0\Parking.Domain.csproj.AssemblyReference.cache

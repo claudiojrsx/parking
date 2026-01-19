@@ -1,5 +1,74 @@
 [
   {
+    "ContainingType": "Parking.Api.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Parking.Api.DTOs.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Parking.Api.Controllers.ParkingSpotController",
+    "Method": "Create",
+    "RelativePath": "api/parking-spots",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Parking.Api.DTOs.CreateParkingSpotRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Parking.Api.Controllers.ParkingSpotController",
+    "Method": "Deactivate",
+    "RelativePath": "api/parking-spots/{spotId}/deactivate",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "spotId",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Parking.Api.Controllers.ParkingSpotController",
+    "Method": "GetAvailable",
+    "RelativePath": "api/parking-spots/available",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "type",
+        "Type": "Parking.Domain.Enums.ParkingSpotType",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Parking.Api.Controllers.ParkingController",
     "Method": "CheckIn",
     "RelativePath": "api/parking/check-in",
@@ -26,6 +95,22 @@
       {
         "Name": "vehicleId",
         "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Parking.Api.Controllers.PricingController",
+    "Method": "Create",
+    "RelativePath": "api/pricing",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Parking.Api.DTOs.CreatePricingRequest",
         "IsRequired": true
       }
     ],

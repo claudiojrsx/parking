@@ -1,37 +1,43 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Parking.Api.DTOs;
-using Parking.Application.Services;
-
-namespace Parking.Api.Controllers;
-
-[ApiController]
-[Route("api/parking")]
-public class ParkingController : ControllerBase
+﻿namespace Parking.Api.Controllers
 {
-    private readonly ParkingService _parkingService;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+    using Parking.Api.Auth;
+    using Parking.Api.DTOs;
+    using Parking.Application.Services;
 
-    public ParkingController(ParkingService parkingService)
+    [ApiController]
+    [Route("api/parking")]
+    [Authorize(Roles = Roles.Operator)]
+    public class ParkingController : ControllerBase
     {
-        _parkingService = parkingService;
-    }
+        private readonly ParkingService _parkingService;
 
-    [HttpPost("check-in")]
-    public async Task<IActionResult> CheckIn([FromBody] CheckInRequest request)
-    {
-        var sessionId = await _parkingService.CheckInAsync(
-            request.Plate,
-            request.VehicleType);
-
-        return Ok(new CheckInResponse
+        public ParkingController(ParkingService parkingService)
         {
-            SessionId = sessionId
-        });
-    }
+            _parkingService = parkingService;
+        }
 
-    [HttpPost("check-out/{vehicleId:guid}")]
-    public async Task<IActionResult> CheckOut(Guid vehicleId)
-    {
-        await _parkingService.CheckOutAsync(vehicleId);
-        return NoContent();
+        [Authorize(Roles = $"{Roles.Admin},{Roles.Operator}")]
+        [HttpPost("check-in")]
+        public async Task<IActionResult> CheckIn([FromBody] CheckInRequest request)
+        {
+            var sessionId = await _parkingService.CheckInAsync(
+                request.Plate,
+                request.VehicleType);
+
+            return Ok(new CheckInResponse
+            {
+                SessionId = sessionId
+            });
+        }
+
+        [Authorize(Roles = $"{Roles.Admin},{Roles.Operator}")]
+        [HttpPost("check-out/{vehicleId:guid}")]
+        public async Task<IActionResult> CheckOut(Guid vehicleId)
+        {
+            var result = await _parkingService.CheckOutAsync(vehicleId);
+            return Ok(result);
+        }
     }
 }

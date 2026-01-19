@@ -5,6 +5,37 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/parking/check-in": {
       "post": {
         "tags": [
@@ -58,6 +89,119 @@
           }
         }
       }
+    },
+    "/api/parking-spots": {
+      "post": {
+        "tags": [
+          "ParkingSpot"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateParkingSpotRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateParkingSpotRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateParkingSpotRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/parking-spots/available": {
+      "get": {
+        "tags": [
+          "ParkingSpot"
+        ],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/ParkingSpotType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/parking-spots/{spotId}/deactivate": {
+      "patch": {
+        "tags": [
+          "ParkingSpot"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "spotId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/pricing": {
+      "post": {
+        "tags": [
+          "Pricing"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePricingRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePricingRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePricingRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -75,20 +219,86 @@
         },
         "additionalProperties": false
       },
+      "CreateParkingSpotRequest": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/ParkingSpotType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreatePricingRequest": {
+        "type": "object",
+        "properties": {
+          "motorcycle": {
+            "type": "number",
+            "format": "double"
+          },
+          "car": {
+            "type": "number",
+            "format": "double"
+          },
+          "truck": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginRequest": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "minLength": 6,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ParkingSpotType": {
+        "enum": [
+          "Motorcycle",
+          "Car",
+          "Truck"
+        ],
+        "type": "string"
+      },
       "VehicleType": {
         "enum": [
-          1,
-          2,
-          3
+          "Motorcycle",
+          "Car",
+          "Truck"
         ],
-        "type": "integer",
-        "format": "int32"
+        "type": "string"
       }
     }
   },
   "tags": [
     {
+      "name": "Auth"
+    },
+    {
       "name": "Parking"
+    },
+    {
+      "name": "ParkingSpot"
+    },
+    {
+      "name": "Pricing"
     }
   ]
 }

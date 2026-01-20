@@ -29,11 +29,13 @@ public class ParkingService
     {
         var licensePlate = new LicensePlate(plate);
 
-        var vehicle = await _vehicleRepo.GetByLicensePlateAsync(licensePlate)
-            ?? new Vehicle(licensePlate, type);
+        var vehicle = await _vehicleRepo.GetByLicensePlateAsync(licensePlate);
 
-        if (vehicle.Id == Guid.Empty)
+        if (vehicle is null)
+        {
+            vehicle = new Vehicle(licensePlate, type);
             await _vehicleRepo.AddAsync(vehicle);
+        }
 
         var spot = await _spotRepo.GetAvailableAsync((ParkingSpotType)type)
             ?? throw new InvalidOperationException("No available spot");

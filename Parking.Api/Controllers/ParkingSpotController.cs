@@ -47,7 +47,25 @@
             ));
         }
 
-        [HttpPatch("{spotId:guid}/deactivate")]
+        [HttpGet("all-available")]
+        public async Task<IActionResult> GetAvailableByType(ParkingSpotType type)
+        {
+            var spots = await _spotRepo.GetAvailableByTypeAsync(type);
+
+            if (spots.Count == 0)
+                return NotFound("No available spots for this type.");
+
+            var response = spots.Select(spot => new ParkingSpotResponse(
+                spot.Id,
+                spot.Code,
+                spot.Type.ToString(),
+                spot.IsOccupied
+            ));
+
+            return Ok(response);
+        }
+
+        [HttpPatch("deactivate")]
         public async Task<IActionResult> Deactivate(Guid id)
         {
             var spot = await _spotRepo.GetByIdAsync(id);

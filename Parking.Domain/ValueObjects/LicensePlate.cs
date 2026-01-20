@@ -2,7 +2,7 @@
 
 public class LicensePlate
 {
-    public string Value { get; }
+    public string Value { get; private set; }
 
     protected LicensePlate() { }
 

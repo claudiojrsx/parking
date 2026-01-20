@@ -12,6 +12,8 @@ public class VehicleMap : IEntityTypeConfiguration<Vehicle>
 
         builder.OwnsOne(v => v.LicensePlate, lp =>
         {
+            lp.WithOwner();
+
             lp.Property(p => p.Value)
               .HasColumnName("LicensePlate")
               .HasMaxLength(10)
@@ -19,6 +21,7 @@ public class VehicleMap : IEntityTypeConfiguration<Vehicle>
         });
 
         builder.Property(v => v.Type)
+               .HasConversion<int>()
                .IsRequired();
     }
 }

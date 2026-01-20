@@ -1,4 +1,5 @@
 C:\Parking\Parking.Infrastructure\bin\Debug\net10.0\Parking.Infrastructure.deps.json
+C:\Parking\Parking.Infrastructure\bin\Debug\net10.0\Parking.Infrastructure.runtimeconfig.json
 C:\Parking\Parking.Infrastructure\bin\Debug\net10.0\Parking.Infrastructure.dll
 C:\Parking\Parking.Infrastructure\bin\Debug\net10.0\Parking.Infrastructure.pdb
 C:\Parking\Parking.Infrastructure\bin\Debug\net10.0\Parking.Application.dll
@@ -15,6 +16,5 @@ C:\Parking\Parking.Infrastructure\obj\Debug\net10.0\Parking..8D306015.Up2Date
 C:\Parking\Parking.Infrastructure\obj\Debug\net10.0\Parking.Infrastructure.dll
 C:\Parking\Parking.Infrastructure\obj\Debug\net10.0\refint\Parking.Infrastructure.dll
 C:\Parking\Parking.Infrastructure\obj\Debug\net10.0\Parking.Infrastructure.pdb
-C:\Parking\Parking.Infrastructure\obj\Debug\net10.0\ref\Parking.Infrastructure.dll
-C:\Parking\Parking.Infrastructure\bin\Debug\net10.0\Parking.Infrastructure.runtimeconfig.json
 C:\Parking\Parking.Infrastructure\obj\Debug\net10.0\Parking.Infrastructure.genruntimeconfig.cache
+C:\Parking\Parking.Infrastructure\obj\Debug\net10.0\ref\Parking.Infrastructure.dll

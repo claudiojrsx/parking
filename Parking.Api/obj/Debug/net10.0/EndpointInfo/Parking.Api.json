@@ -1,8 +1,8 @@
 {
-  "openapi": "3.0.4",
+  "openapi": "3.0.1",
   "info": {
-    "title": "Parking.Api",
-    "version": "1.0"
+    "title": "Parking API",
+    "version": "v1"
   },
   "paths": {
     "/api/auth/login": {
@@ -31,7 +31,31 @@
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/auth/claims": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/auth/me": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
           }
         }
       }
@@ -62,12 +86,12 @@
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Success"
           }
         }
       }
     },
-    "/api/parking/check-out/{vehicleId}": {
+    "/api/parking/check-out": {
       "post": {
         "tags": [
           "Parking"
@@ -75,8 +99,7 @@
         "parameters": [
           {
             "name": "vehicleId",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "schema": {
               "type": "string",
               "format": "uuid"
@@ -85,7 +108,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Success"
           }
         }
       }
@@ -116,7 +139,7 @@
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Success"
           }
         }
       }
@@ -137,12 +160,33 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Success"
           }
         }
       }
     },
-    "/api/parking-spots/{spotId}/deactivate": {
+    "/api/parking-spots/all-available": {
+      "get": {
+        "tags": [
+          "ParkingSpot"
+        ],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/ParkingSpotType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/parking-spots/deactivate": {
       "patch": {
         "tags": [
           "ParkingSpot"
@@ -155,19 +199,11 @@
               "type": "string",
               "format": "uuid"
             }
-          },
-          {
-            "name": "spotId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Success"
           }
         }
       }
@@ -198,7 +234,31 @@
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/test/auth": {
+      "get": {
+        "tags": [
+          "Test"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/test/admin": {
+      "get": {
+        "tags": [
+          "Test"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
           }
         }
       }
@@ -285,20 +345,19 @@
         ],
         "type": "string"
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "Digite: Bearer {seu token JWT}",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
     }
   },
-  "tags": [
+  "security": [
     {
-      "name": "Auth"
-    },
-    {
-      "name": "Parking"
-    },
-    {
-      "name": "ParkingSpot"
-    },
-    {
-      "name": "Pricing"
+      "Bearer": [ ]
     }
   ]
 }

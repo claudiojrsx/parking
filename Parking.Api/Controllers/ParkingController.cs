@@ -6,9 +6,9 @@
     using Parking.Api.DTOs;
     using Parking.Application.Services;
 
+    [Authorize]
     [ApiController]
     [Route("api/parking")]
-    [Authorize(Roles = Roles.Operator)]
     public class ParkingController : ControllerBase
     {
         private readonly ParkingService _parkingService;
@@ -33,7 +33,7 @@
         }
 
         [Authorize(Roles = $"{Roles.Admin},{Roles.Operator}")]
-        [HttpPost("check-out/{vehicleId:guid}")]
+        [HttpPost("check-out")]
         public async Task<IActionResult> CheckOut(Guid vehicleId)
         {
             var result = await _parkingService.CheckOutAsync(vehicleId);

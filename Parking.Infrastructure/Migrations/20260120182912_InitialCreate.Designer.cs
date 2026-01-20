@@ -12,8 +12,8 @@ using Parking.Infrastructure.Context;
 namespace Parking.Infrastructure.Migrations
 {
     [DbContext(typeof(ParkingDbContext))]
-    [Migration("20260119204148_UpdateAdminPasswordHash")]
-    partial class UpdateAdminPasswordHash
+    [Migration("20260120182912_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

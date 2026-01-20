@@ -22,4 +22,12 @@ public class ParkingSpotRepository
                 !p.IsOccupied &&
                 p.Type == type);
     }
+
+    public async Task<List<ParkingSpot>> GetAvailableByTypeAsync(ParkingSpotType type)
+    {
+        return await _context.ParkingSpots
+            .Where(s => s.Type == type && !s.IsOccupied)
+            .OrderBy(s => s.Code)
+            .ToListAsync();
+    }
 }

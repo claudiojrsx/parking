@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Parking.Application.Interfaces.Repositories;
+﻿using Parking.Application.Interfaces.Repositories;
 using Parking.Application.Interfaces.Security;
-using Parking.Domain.Entities;
 
 namespace Parking.Application.Services;
 
@@ -9,7 +7,6 @@ public class AuthService
 {
     private readonly IUserRepository _userRepo;
     private readonly IJwtTokenGenerator _jwt;
-    private readonly PasswordHasher<User> _hasher = new();
 
     public AuthService(
         IUserRepository userRepo,
@@ -21,10 +18,7 @@ public class AuthService
 
     public async Task<string?> LoginAsync(string email, string password)
     {
-        var user = await _userRepo.GetByEmailAsync(email);
-        if (user == null)
-            return null;
-
+        var user = await _userRepo.GetByEmailAsync(email) ?? throw new Exception("Role não carregada");
         var isValid = BCrypt.Net.BCrypt.Verify(
             password,
             user.PasswordHash);

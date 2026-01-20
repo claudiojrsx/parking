@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Parking.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialAuth : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -111,7 +111,7 @@ namespace Parking.Infrastructure.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Email", "Name", "PasswordHash", "RoleId" },
-                values: new object[] { new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"), "admin@parking.com", "System Admin", "$2a$11$8Y0eZyZxH8f1YFz1mZJw5O0G9fC7Zb8F8yF5xJ6u7n9yKZc2e6H9e", new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa") });
+                values: new object[] { new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"), "admin@parking.com", "System Admin", "$2b$10$pvVtvha0LggnboHgBUA6J.kWPgprV2QsIBeXuhSI0hplO5mSeWJGa", new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_ParkingSessions_VehicleId_ExitTime",

@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Parking.Api.Auth;
 using Parking.Api.DTOs;
 using Parking.Infrastructure.Context;
 using Parking.Infrastructure.Entities;
 
 namespace Parking.Api.Controllers
 {
+    [Authorize(Roles = $"{Roles.Admin}")]
     [ApiController]
     [Route("api/pricing")]
     public class PricingController : ControllerBase

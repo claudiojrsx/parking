@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Parking\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{27B7223E-C631-210D-C769-014EBF0074BD}|Parking.Api\\Parking.Api.csproj|c:\\parking\\parking.api\\controllers\\parkingspotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{27B7223E-C631-210D-C769-014EBF0074BD}|Parking.Api\\Parking.Api.csproj|solutionrelative:parking.api\\controllers\\parkingspotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{27B7223E-C631-210D-C769-014EBF0074BD}|Parking.Api\\Parking.Api.csproj|c:\\parking\\parking.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27B7223E-C631-210D-C769-014EBF0074BD}|Parking.Api\\Parking.Api.csproj|solutionrelative:parking.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{042CBF5E-6C41-CDF6-3C49-B8D59110874D}|Parking.Infrastructure\\Parking.Infrastructure.csproj|c:\\parking\\parking.infrastructure\\repositories\\parkingspotrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{042CBF5E-6C41-CDF6-3C49-B8D59110874D}|Parking.Infrastructure\\Parking.Infrastructure.csproj|solutionrelative:parking.infrastructure\\repositories\\parkingspotrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{27B7223E-C631-210D-C769-014EBF0074BD}|Parking.Api\\Parking.Api.csproj|c:\\parking\\parking.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27B7223E-C631-210D-C769-014EBF0074BD}|Parking.Api\\Parking.Api.csproj|solutionrelative:parking.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A59532B9-B875-1A4C-B7C0-E9E2F7D566A4}|Parking.Application\\Parking.Application.csproj|c:\\parking\\parking.application\\interfaces\\repositories\\iparkingspotrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A59532B9-B875-1A4C-B7C0-E9E2F7D566A4}|Parking.Application\\Parking.Application.csproj|solutionrelative:parking.application\\interfaces\\repositories\\iparkingspotrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A59532B9-B875-1A4C-B7C0-E9E2F7D566A4}|Parking.Application\\Parking.Application.csproj|c:\\parking\\parking.application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A59532B9-B875-1A4C-B7C0-E9E2F7D566A4}|Parking.Application\\Parking.Application.csproj|solutionrelative:parking.application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A59532B9-B875-1A4C-B7C0-E9E2F7D566A4}|Parking.Application\\Parking.Application.csproj|c:\\parking\\parking.application\\services\\parkingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A59532B9-B875-1A4C-B7C0-E9E2F7D566A4}|Parking.Application\\Parking.Application.csproj|solutionrelative:parking.application\\services\\parkingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 19,
+          "SelectedChildIndex": 17,
           "Children": [
             {
               "$type": "Bookmark",
@@ -94,41 +98,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ParkingSpotRepository.cs",
-              "DocumentMoniker": "C:\\Parking\\Parking.Infrastructure\\Repositories\\ParkingSpotRepository.cs",
-              "RelativeDocumentMoniker": "Parking.Infrastructure\\Repositories\\ParkingSpotRepository.cs",
-              "ToolTip": "C:\\Parking\\Parking.Infrastructure\\Repositories\\ParkingSpotRepository.cs",
-              "RelativeToolTip": "Parking.Infrastructure\\Repositories\\ParkingSpotRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Parking\\Parking.Api\\Program.cs",
+              "RelativeDocumentMoniker": "Parking.Api\\Program.cs",
+              "ToolTip": "C:\\Parking\\Parking.Api\\Program.cs",
+              "RelativeToolTip": "Parking.Api\\Program.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAC0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-20T18:50:57.514Z",
+              "WhenOpened": "2026-01-20T19:47:25.15Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ParkingService.cs",
+              "DocumentMoniker": "C:\\Parking\\Parking.Application\\Services\\ParkingService.cs",
+              "RelativeDocumentMoniker": "Parking.Application\\Services\\ParkingService.cs",
+              "ToolTip": "C:\\Parking\\Parking.Application\\Services\\ParkingService.cs",
+              "RelativeToolTip": "Parking.Application\\Services\\ParkingService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-20T19:32:41.926Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "IParkingSpotRepository.cs",
-              "DocumentMoniker": "C:\\Parking\\Parking.Application\\Interfaces\\Repositories\\IParkingSpotRepository.cs",
-              "RelativeDocumentMoniker": "Parking.Application\\Interfaces\\Repositories\\IParkingSpotRepository.cs",
-              "ToolTip": "C:\\Parking\\Parking.Application\\Interfaces\\Repositories\\IParkingSpotRepository.cs",
-              "RelativeToolTip": "Parking.Application\\Interfaces\\Repositories\\IParkingSpotRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Parking\\Parking.Application\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "Parking.Application\\Services\\UserService.cs",
+              "ToolTip": "C:\\Parking\\Parking.Application\\Services\\UserService.cs",
+              "RelativeToolTip": "Parking.Application\\Services\\UserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-20T18:49:08.324Z",
+              "WhenOpened": "2026-01-20T19:29:33.258Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ParkingSpotController.cs",
-              "DocumentMoniker": "C:\\Parking\\Parking.Api\\Controllers\\ParkingSpotController.cs",
-              "RelativeDocumentMoniker": "Parking.Api\\Controllers\\ParkingSpotController.cs",
-              "ToolTip": "C:\\Parking\\Parking.Api\\Controllers\\ParkingSpotController.cs",
-              "RelativeToolTip": "Parking.Api\\Controllers\\ParkingSpotController.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAgwDAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Parking\\Parking.Api\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Parking.Api\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Parking\\Parking.Api\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Parking.Api\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-20T18:35:06.245Z",
+              "WhenOpened": "2026-01-20T19:26:51.444Z",
               "EditorCaption": ""
             }
           ]

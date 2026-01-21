@@ -1,0 +1,26 @@
+<div class="layout">
+  <aside class="sidebar">
+    <div class="logo">🅿️ Parking</div>
+
+    <nav>
+      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <a routerLink="/admin" routerLinkActive="active">Administração</a>
+      <a routerLink="/parking-spots" routerLinkActive="active">Vagas</a>
+    </nav>
+  </aside>
+
+  <div class="content">
+    <header class="header">
+      <div class="user-info">
+        <strong>{{ authService.getClaims()?.email }}</strong>
+        <span class="role">{{ authService.getClaims()?.role }}</span>
+      </div>
+
+      <button class="btn-logout" (click)="logout()">Sair</button>
+    </header>
+
+    <main class="page">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

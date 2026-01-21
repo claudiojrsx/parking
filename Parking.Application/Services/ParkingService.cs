@@ -6,24 +6,16 @@ using Parking.Domain.ValueObjects;
 
 namespace Parking.Application.Services;
 
-public class ParkingService
+public class ParkingService(
+    IVehicleRepository vehicleRepo,
+    IParkingSpotRepository spotRepo,
+    IParkingSessionRepository sessionRepo,
+    IPricingRepository pricingRepo)
 {
-    private readonly IVehicleRepository _vehicleRepo;
-    private readonly IParkingSpotRepository _spotRepo;
-    private readonly IParkingSessionRepository _sessionRepo;
-    private readonly IPricingRepository _pricingRepo;
-
-    public ParkingService(
-        IVehicleRepository vehicleRepo,
-        IParkingSpotRepository spotRepo,
-        IParkingSessionRepository sessionRepo,
-        IPricingRepository pricingRepo)
-    {
-        _vehicleRepo = vehicleRepo;
-        _spotRepo = spotRepo;
-        _sessionRepo = sessionRepo;
-        _pricingRepo = pricingRepo;
-    }
+    private readonly IVehicleRepository _vehicleRepo = vehicleRepo;
+    private readonly IParkingSpotRepository _spotRepo = spotRepo;
+    private readonly IParkingSessionRepository _sessionRepo = sessionRepo;
+    private readonly IPricingRepository _pricingRepo = pricingRepo;
 
     public async Task<Guid> CheckInAsync(string plate, VehicleType type)
     {

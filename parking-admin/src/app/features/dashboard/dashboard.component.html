@@ -1,0 +1,30 @@
+<div class="dashboard-header">
+  <button
+    [class.active]="selectedType === ParkingSpotType.Car"
+    (click)="changeType(ParkingSpotType.Car)">
+    🚗 Carros
+  </button>
+
+  <button
+    [class.active]="selectedType === ParkingSpotType.Motorcycle"
+    (click)="changeType(ParkingSpotType.Motorcycle)">
+    🏍️ Motos
+  </button>
+</div>
+
+<div class="cards">
+  <div class="card">
+    <h3>Total de Vagas</h3>
+    <strong>{{ totalSpots }}</strong>
+  </div>
+
+  <div class="card free">
+    <h3>Vagas Livres</h3>
+    <strong>{{ freeSpots }}</strong>
+  </div>
+
+  <div class="card occupied">
+    <h3>Ocupadas</h3>
+    <strong>{{ totalSpots - freeSpots }}</strong>
+  </div>
+</div>

@@ -9,7 +9,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string) {
-    return this.http.post<any>('https://api.seuservico.com/auth/login', {
+    return this.http.post<any>('https://localhost:7097/api/auth/login', {
       email,
       password
     }).pipe(

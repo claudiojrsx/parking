@@ -3,14 +3,9 @@ using Parking.Domain.Entities;
 
 namespace Parking.Application.Services
 {
-    public class UserService
+    public class UserService(IUserRepository userRepo)
     {
-        private readonly IUserRepository _userRepo;
-
-        public UserService(IUserRepository userRepo)
-        {
-            _userRepo = userRepo;
-        }
+        private readonly IUserRepository _userRepo = userRepo;
 
         public async Task<Guid> CreateUserAsync(string name, string email, string password, Guid roleId)
         {

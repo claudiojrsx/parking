@@ -1,0 +1,33 @@
+<div class="form">
+  <select [(ngModel)]="selectedType" (change)="loadSpots()">
+    <option [ngValue]="ParkingSpotType.Car">Carro</option>
+    <option [ngValue]="ParkingSpotType.Motorcycle">Moto</option>
+    <option [ngValue]="ParkingSpotType.Truck">Caminhão</option>
+  </select>
+
+  <input
+    type="text"
+    placeholder="Código da vaga"
+    [(ngModel)]="newSpot.code"
+  />
+
+  <button class="btn-primary" (click)="createSpot()">Criar vaga</button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Tipo</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let spot of spots">
+      <td>{{ spot.code }}</td>
+      <td>{{ spot.type }}</td>
+      <td class="free">Livre</td>
+    </tr>
+  </tbody>
+</table>

@@ -9,14 +9,9 @@ namespace Parking.Api.Controllers
     [ApiController]
     [Route("api/users")]
     [Authorize(Roles = Roles.Admin)]
-    public class UsersController : Controller
+    public class UsersController(UserService userService) : Controller
     {
-        private readonly UserService _userService;
-
-        public UsersController(UserService userService)
-        {
-            _userService = userService;
-        }
+        private readonly UserService _userService = userService;
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateUserRequest request)

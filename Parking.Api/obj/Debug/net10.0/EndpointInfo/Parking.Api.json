@@ -142,6 +142,25 @@
             "description": "Success"
           }
         }
+      },
+      "get": {
+        "tags": [
+          "ParkingSpot"
+        ],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/ParkingSpotType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
       }
     },
     "/api/parking-spots/available": {
@@ -166,6 +185,27 @@
       }
     },
     "/api/parking-spots/all-available": {
+      "get": {
+        "tags": [
+          "ParkingSpot"
+        ],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/ParkingSpotType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/parking-spots/summary": {
       "get": {
         "tags": [
           "ParkingSpot"

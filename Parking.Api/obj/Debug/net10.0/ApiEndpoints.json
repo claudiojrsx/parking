@@ -53,6 +53,22 @@
   },
   {
     "ContainingType": "Parking.Api.Controllers.ParkingSpotController",
+    "Method": "GetAllByType",
+    "RelativePath": "api/parking-spots",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "type",
+        "Type": "Parking.Domain.Enums.ParkingSpotType",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Parking.Api.Controllers.ParkingSpotController",
     "Method": "GetAvailableByType",
     "RelativePath": "api/parking-spots/all-available",
     "HttpMethod": "GET",
@@ -94,6 +110,22 @@
       {
         "Name": "id",
         "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Parking.Api.Controllers.ParkingSpotController",
+    "Method": "GetSummary",
+    "RelativePath": "api/parking-spots/summary",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "type",
+        "Type": "Parking.Domain.Enums.ParkingSpotType",
         "IsRequired": false
       }
     ],

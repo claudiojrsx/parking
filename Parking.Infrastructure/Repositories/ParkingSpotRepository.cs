@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Parking.Application.DTOs;
+using Microsoft.EntityFrameworkCore;
 using Parking.Application.Interfaces.Repositories;
 using Parking.Domain.Entities;
 using Parking.Domain.Enums;
@@ -29,5 +30,26 @@ public class ParkingSpotRepository
             .Where(s => s.Type == type && !s.IsOccupied)
             .OrderBy(s => s.Code)
             .ToListAsync();
+    }
+
+    public async Task<List<ParkingSpot>> GetAllByTypeAsync(ParkingSpotType type)
+    {
+        return await _context.ParkingSpots
+            .Where(x => x.Type == type)
+            .ToListAsync();
+    }
+
+    public async Task<ParkingSpotSummary> GetSummaryAsync(ParkingSpotType type)
+    {
+        var spots = await _context.ParkingSpots
+            .Where(x => x.Type == type && x.IsActive)
+            .ToListAsync();
+
+        return new ParkingSpotSummary
+        {
+            Total = spots.Count,
+            Free = spots.Count(x => !x.IsOccupied),
+            Occupied = spots.Count(x => x.IsOccupied)
+        };
     }
 }

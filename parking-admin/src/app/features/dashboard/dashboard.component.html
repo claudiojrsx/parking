@@ -1,30 +1,30 @@
 <div class="dashboard-header">
-  <button
-    [class.active]="selectedType === ParkingSpotType.Car"
-    (click)="changeType(ParkingSpotType.Car)">
+  <button [class.active]="selectedType === ParkingSpotType.Car" (click)="changeType(ParkingSpotType.Car)">
     🚗 Carros
   </button>
 
-  <button
-    [class.active]="selectedType === ParkingSpotType.Motorcycle"
-    (click)="changeType(ParkingSpotType.Motorcycle)">
+  <button [class.active]="selectedType === ParkingSpotType.Motorcycle" (click)="changeType(ParkingSpotType.Motorcycle)">
     🏍️ Motos
+  </button>
+
+  <button [class.active]="selectedType === ParkingSpotType.Truck" (click)="changeType(ParkingSpotType.Truck)">
+    🚚 Caminhão
   </button>
 </div>
 
-<div class="cards">
-  <div class="card">
+<div class="cards" *ngIf="summary">
+  <div class="card total">
     <h3>Total de Vagas</h3>
-    <strong>{{ totalSpots }}</strong>
+    <strong>{{ summary.total }}</strong>
   </div>
 
   <div class="card free">
     <h3>Vagas Livres</h3>
-    <strong>{{ freeSpots }}</strong>
+    <strong>{{ summary.free }}</strong>
   </div>
 
   <div class="card occupied">
     <h3>Ocupadas</h3>
-    <strong>{{ totalSpots - freeSpots }}</strong>
+    <strong>{{ summary.occupied }}</strong>
   </div>
 </div>

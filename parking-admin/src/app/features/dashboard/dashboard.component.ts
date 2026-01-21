@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ParkingSpotService } from '../../core/services/parking-spot.service';
 import { ParkingSpotType } from '../../core/enums/parking-spot-type.enum';
+import { ParkingSpotSummary } from '../../core/models/parking-spot-summary.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,35 +13,25 @@ import { ParkingSpotType } from '../../core/enums/parking-spot-type.enum';
 })
 export class DashboardComponent implements OnInit {
 
-  totalSpots = 0;
-  freeSpots = 0;
-
   selectedType: ParkingSpotType = ParkingSpotType.Car;
+  summary?: ParkingSpotSummary;
+
   ParkingSpotType = ParkingSpotType;
 
   constructor(private spotService: ParkingSpotService) {}
 
   ngOnInit(): void {
-    this.loadData();
-  }
-
-  loadData() {
-    this.loadTotal();
-    this.loadFree();
-  }
-
-  loadTotal() {
-    this.spotService.getAllByType(this.selectedType)
-      .subscribe(spots => this.totalSpots = spots.length);
-  }
-
-  loadFree() {
-    this.spotService.getAllAvailable(this.selectedType)
-      .subscribe(spots => this.freeSpots = spots.length);
+    this.loadSummary();
   }
 
   changeType(type: ParkingSpotType) {
     this.selectedType = type;
-    this.loadData();
+    this.loadSummary();
+  }
+
+  loadSummary() {
+    this.spotService
+      .getSummary(this.selectedType)
+      .subscribe(summary => this.summary = summary);
   }
 }

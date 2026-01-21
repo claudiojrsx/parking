@@ -14,20 +14,50 @@
   <button class="btn-primary" (click)="createSpot()">Criar vaga</button>
 </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Código</th>
-      <th>Tipo</th>
-      <th>Status</th>
-    </tr>
-  </thead>
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z3 table-wrapper">
 
-  <tbody>
-    <tr *ngFor="let spot of spots">
-      <td>{{ spot.code }}</td>
-      <td>{{ spot.type }}</td>
-      <td class="free">Livre</td>
-    </tr>
-  </tbody>
+  <!-- Código -->
+  <ng-container matColumnDef="code">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Código </th>
+    <td mat-cell *matCellDef="let spot"> {{ spot.code }} </td>
+  </ng-container>
+
+  <!-- Tipo -->
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef> Tipo </th>
+    <td mat-cell *matCellDef="let spot">
+      <mat-chip color="primary">{{ spot.type }}</mat-chip>
+    </td>
+  </ng-container>
+
+  <!-- Status -->
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let spot">
+      <mat-chip
+        [color]="spot.isOccupied ? 'warn' : 'accent'"
+      >
+        {{ spot.isOccupied ? 'Ocupada' : 'Livre' }}
+      </mat-chip>
+    </td>
+  </ng-container>
+
+  <!-- Ações -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Ações </th>
+    <td mat-cell *matCellDef="let spot">
+      <button mat-icon-button color="warn">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+<mat-paginator
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 20]"
+  showFirstLastButtons>
+</mat-paginator>

@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Parking\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{27B7223E-C631-210D-C769-014EBF0074BD}|Parking.Api\\Parking.Api.csproj|c:\\parking\\parking.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{27B7223E-C631-210D-C769-014EBF0074BD}|Parking.Api\\Parking.Api.csproj|solutionrelative:parking.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{27B7223E-C631-210D-C769-014EBF0074BD}|Parking.Api\\Parking.Api.csproj|c:\\parking\\parking.api\\controllers\\parkingspotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27B7223E-C631-210D-C769-014EBF0074BD}|Parking.Api\\Parking.Api.csproj|solutionrelative:parking.api\\controllers\\parkingspotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{27B7223E-C631-210D-C769-014EBF0074BD}|Parking.Api\\Parking.Api.csproj|c:\\parking\\parking.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{27B7223E-C631-210D-C769-014EBF0074BD}|Parking.Api\\Parking.Api.csproj|solutionrelative:parking.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{042CBF5E-6C41-CDF6-3C49-B8D59110874D}|Parking.Infrastructure\\Parking.Infrastructure.csproj|c:\\parking\\parking.infrastructure\\repositories\\parkingspotrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{042CBF5E-6C41-CDF6-3C49-B8D59110874D}|Parking.Infrastructure\\Parking.Infrastructure.csproj|solutionrelative:parking.infrastructure\\repositories\\parkingspotrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A59532B9-B875-1A4C-B7C0-E9E2F7D566A4}|Parking.Application\\Parking.Application.csproj|c:\\parking\\parking.application\\interfaces\\repositories\\iparkingspotrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A59532B9-B875-1A4C-B7C0-E9E2F7D566A4}|Parking.Application\\Parking.Application.csproj|solutionrelative:parking.application\\interfaces\\repositories\\iparkingspotrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 17,
+          "SelectedChildIndex": 19,
           "Children": [
             {
               "$type": "Bookmark",
@@ -90,28 +94,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Parking\\Parking.Api\\Program.cs",
-              "RelativeDocumentMoniker": "Parking.Api\\Program.cs",
-              "ToolTip": "C:\\Parking\\Parking.Api\\Program.cs",
-              "RelativeToolTip": "Parking.Api\\Program.cs",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAAAHUAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "ParkingSpotRepository.cs",
+              "DocumentMoniker": "C:\\Parking\\Parking.Infrastructure\\Repositories\\ParkingSpotRepository.cs",
+              "RelativeDocumentMoniker": "Parking.Infrastructure\\Repositories\\ParkingSpotRepository.cs",
+              "ToolTip": "C:\\Parking\\Parking.Infrastructure\\Repositories\\ParkingSpotRepository.cs",
+              "RelativeToolTip": "Parking.Infrastructure\\Repositories\\ParkingSpotRepository.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAowDcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T13:52:34.686Z",
+              "WhenOpened": "2026-01-21T19:35:36.878Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Parking\\Parking.Api\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "Parking.Api\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Parking\\Parking.Api\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "Parking.Api\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAkAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "IParkingSpotRepository.cs",
+              "DocumentMoniker": "C:\\Parking\\Parking.Application\\Interfaces\\Repositories\\IParkingSpotRepository.cs",
+              "RelativeDocumentMoniker": "Parking.Application\\Interfaces\\Repositories\\IParkingSpotRepository.cs",
+              "ToolTip": "C:\\Parking\\Parking.Application\\Interfaces\\Repositories\\IParkingSpotRepository.cs",
+              "RelativeToolTip": "Parking.Application\\Interfaces\\Repositories\\IParkingSpotRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-21T12:42:27.424Z",
+              "WhenOpened": "2026-01-21T19:35:08.221Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ParkingSpotController.cs",
+              "DocumentMoniker": "C:\\Parking\\Parking.Api\\Controllers\\ParkingSpotController.cs",
+              "RelativeDocumentMoniker": "Parking.Api\\Controllers\\ParkingSpotController.cs",
+              "ToolTip": "C:\\Parking\\Parking.Api\\Controllers\\ParkingSpotController.cs",
+              "RelativeToolTip": "Parking.Api\\Controllers\\ParkingSpotController.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAwwE8AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-21T18:39:05.866Z",
               "EditorCaption": ""
             }
           ]

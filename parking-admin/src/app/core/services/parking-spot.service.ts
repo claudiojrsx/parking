@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ParkingSpotType } from '../enums/parking-spot-type.enum';
+import { ParkingSpotSummary } from '../models/parking-spot-summary.model';
 
 @Injectable({ providedIn: 'root' })
 export class ParkingSpotService {
@@ -21,6 +22,13 @@ export class ParkingSpotService {
   getOneAvailable(type: ParkingSpotType) {
     const params = new HttpParams().set('type', ParkingSpotType[type]);
     return this.http.get<any>(`${this.baseUrl}/available`, { params });
+  }
+
+  getSummary(type: ParkingSpotType) {
+    const params = new HttpParams().set('type', ParkingSpotType[type]);
+    return this.http.get<ParkingSpotSummary>(`${this.baseUrl}/summary`, {
+      params,
+    });
   }
 
   create(spot: { code: string; type: ParkingSpotType }) {

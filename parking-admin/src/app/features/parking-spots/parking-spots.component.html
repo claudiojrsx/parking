@@ -14,46 +14,69 @@
   <button class="btn-primary" (click)="createSpot()">Criar vaga</button>
 </div>
 
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z3 table-wrapper">
+<table
+  mat-table
+  [dataSource]="dataSource"
+  matSort
+  class="mat-elevation-z3 table-wrapper"
+>
 
   <!-- Código -->
   <ng-container matColumnDef="code">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Código </th>
-    <td mat-cell *matCellDef="let spot"> {{ spot.code }} </td>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      Código
+    </th>
+    <td mat-cell *matCellDef="let spot">
+      {{ spot.code }}
+    </td>
+    <td mat-footer-cell *matFooterCellDef colspan="3">
+      <strong>Total:</strong> {{ summary?.total }}
+      &nbsp;|&nbsp;
+      <strong>Livres:</strong> {{ summary?.free }}
+      &nbsp;|&nbsp;
+      <strong>Ocupadas:</strong> {{ summary?.occupied }}
+    </td>
   </ng-container>
 
   <!-- Tipo -->
   <ng-container matColumnDef="type">
-    <th mat-header-cell *matHeaderCellDef> Tipo </th>
+    <th mat-header-cell *matHeaderCellDef>
+      Tipo
+    </th>
     <td mat-cell *matCellDef="let spot">
-      <mat-chip color="primary">{{ spot.type }}</mat-chip>
+      <mat-chip color="primary">
+        {{ spot.type }}
+      </mat-chip>
     </td>
+    <td mat-footer-cell *matFooterCellDef></td>
   </ng-container>
 
   <!-- Status -->
   <ng-container matColumnDef="status">
-    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <th mat-header-cell *matHeaderCellDef>
+      Status
+    </th>
     <td mat-cell *matCellDef="let spot">
-      <mat-chip
-        [color]="spot.isOccupied ? 'warn' : 'accent'"
-      >
+      <mat-chip [color]="spot.isOccupied ? 'warn' : 'accent'">
         {{ spot.isOccupied ? 'Ocupada' : 'Livre' }}
       </mat-chip>
     </td>
+    <td mat-footer-cell *matFooterCellDef></td>
   </ng-container>
 
-  <!-- Ações -->
-  <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef> Ações </th>
-    <td mat-cell *matCellDef="let spot">
-      <button mat-icon-button color="warn">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </td>
-  </ng-container>
-
+  <!-- HEADER -->
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+  <!-- ROWS -->
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  <!-- FOOTER -->
+  <tr
+    mat-footer-row
+    *matFooterRowDef="displayedColumns"
+    class="summary-row"
+  ></tr>
+
 </table>
 
 <mat-paginator

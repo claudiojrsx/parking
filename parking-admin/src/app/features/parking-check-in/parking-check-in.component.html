@@ -1,0 +1,26 @@
+<div class="card">
+  <h1>Check-in de Veículo</h1>
+
+  <form (ngSubmit)="submit()" class="form">
+    <div>
+      <label>Placa do veículo</label>
+      <input type="text" [(ngModel)]="plate" name="plate" placeholder="ABC-1234" required />
+    </div>
+
+    <div>
+      <label>Tipo do veículo</label>
+      <select [(ngModel)]="vehicleType" name="vehicleType">
+        <option [value]="VehicleType.Car">Carro</option>
+        <option [value]="VehicleType.Motorcycle">Moto</option>
+        <option [value]="VehicleType.Truck">Caminhão</option>
+      </select>
+    </div>
+
+    <button class="btn-primary" type="submit" [disabled]="loading">
+      {{ loading ? 'Registrando...' : 'Registrar entrada' }}
+    </button>
+  </form>
+
+  <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+</div>

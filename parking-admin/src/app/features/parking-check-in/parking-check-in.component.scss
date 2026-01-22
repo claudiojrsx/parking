@@ -1,0 +1,37 @@
+h1 {
+  margin-bottom: 20px;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 2fr 1fr auto;
+  gap: 16px;
+  align-items: end;
+}
+
+label {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #dcdde1;
+}
+
+.success {
+  margin-top: 16px;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.error {
+  margin-top: 16px;
+  color: #dc2626;
+  font-weight: 600;
+}

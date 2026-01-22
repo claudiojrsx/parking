@@ -1,26 +1,61 @@
-<div class="layout">
-  <aside class="sidebar">
-    <div class="logo">🅿️ Parking</div>
-
-    <nav>
-      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-      <a routerLink="/admin" routerLinkActive="active">Administração</a>
-      <a routerLink="/parking-spots" routerLinkActive="active">Vagas</a>
-    </nav>
-  </aside>
-
-  <div class="content">
-    <header class="header">
-      <div class="user-info">
-        <strong>{{ authService.getClaims()?.email }}</strong>
-        <span class="role">{{ authService.getClaims()?.role }}</span>
-      </div>
-
-      <button class="btn-logout" (click)="logout()">Sair</button>
-    </header>
-
-    <main class="page">
-      <router-outlet></router-outlet>
-    </main>
+<mat-toolbar color="primary" class="topbar">
+  <!-- Logo -->
+  <div class="logo">
+    🚗 <strong>Parking</strong>
   </div>
-</div>
+
+  <nav class="menu">
+    <button mat-button routerLink="/dashboard" routerLinkActive="active">
+      Dashboard
+    </button>
+    <button mat-button routerLink="/parking-spots" routerLinkActive="active">
+      Vagas
+    </button>
+
+    <!-- SUB-MENU PARKING -->
+    <button mat-button [matMenuTriggerFor]="parkingMenu">
+      Parking
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+
+    <mat-menu #parkingMenu="matMenu">
+      <button mat-menu-item routerLink="/parking/check-in">
+        <mat-icon>login</mat-icon>
+        Check-in
+      </button>
+
+      <button mat-menu-item routerLink="/parking/check-out">
+        <mat-icon>logout</mat-icon>
+        Check-out
+      </button>
+    </mat-menu>
+
+    <button mat-button routerLink="/admin" routerLinkActive="active">
+      Admin
+    </button>
+  </nav>
+
+  <span class="spacer"></span>
+
+  <!-- Usuário -->
+  <button mat-button [matMenuTriggerFor]="userMenu" class="user-btn">
+    <mat-icon>account_circle</mat-icon>
+    Minha conta
+  </button>
+
+  <mat-menu #userMenu="matMenu">
+    <button mat-menu-item routerLink="/profile">
+      <mat-icon>person</mat-icon>
+      Perfil
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      Sair
+    </button>
+  </mat-menu>
+</mat-toolbar>
+
+<!-- CONTEÚDO -->
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>

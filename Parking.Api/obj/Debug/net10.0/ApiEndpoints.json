@@ -164,6 +164,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Parking.Api.Controllers.ParkingController",
+    "Method": "GetActiveSessions",
+    "RelativePath": "api/parking/sessions/active",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Parking.Api.Controllers.PricingController",
     "Method": "Create",
     "RelativePath": "api/pricing",

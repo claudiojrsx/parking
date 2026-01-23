@@ -1,36 +1,61 @@
-<div class="dashboard-header">
-
-  <h1 class="text-3xl font-bold text-blue-500">
-    Tailwind funcionando 🎉
+<!-- HEADER -->
+<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
+  <h1 class="text-3xl font-bold text-slate-800 tracking-tight">
+    Dashboard de Vagas
   </h1>
 
+  <div class="grid grid-cols-3 gap-2">
+    <button type="button" (click)="changeType(ParkingSpotType.Car)"
+      [class.border-blue-600]="selectedType === ParkingSpotType.Car"
+      [class.bg-blue-50]="selectedType === ParkingSpotType.Car"
+      class="rounded-xl border p-3 text-sm font-medium transition text-slate-600 hover:bg-slate-100">
+      🚗 Carro
+    </button>
 
-  <button [class.active]="selectedType === ParkingSpotType.Car" (click)="changeType(ParkingSpotType.Car)">
-    🚗 Carros
-  </button>
+    <button type="button" (click)="changeType(ParkingSpotType.Motorcycle)"
+      [class.border-blue-600]="selectedType === ParkingSpotType.Motorcycle"
+      [class.bg-blue-50]="selectedType === ParkingSpotType.Motorcycle"
+      class="rounded-xl border p-3 text-sm font-medium transition text-slate-600 hover:bg-slate-100">
+      🏍 Moto
+    </button>
 
-  <button [class.active]="selectedType === ParkingSpotType.Motorcycle" (click)="changeType(ParkingSpotType.Motorcycle)">
-    🏍️ Motos
-  </button>
-
-  <button [class.active]="selectedType === ParkingSpotType.Truck" (click)="changeType(ParkingSpotType.Truck)">
-    🚚 Caminhão
-  </button>
+    <button type="button" (click)="changeType(ParkingSpotType.Truck)"
+      [class.border-blue-600]="selectedType === ParkingSpotType.Truck"
+      [class.bg-blue-50]="selectedType === ParkingSpotType.Truck"
+      class="rounded-xl border p-3 text-sm font-medium transition text-slate-600 hover:bg-slate-100">
+      🚚 Caminhão
+    </button>
+  </div>
 </div>
 
-<div class="cards" *ngIf="summary">
-  <div class="card total">
-    <h3>Total de Vagas</h3>
-    <strong>{{ summary.total }}</strong>
+<!-- CARDS -->
+<div class="grid gap-6 md:grid-cols-3" *ngIf="summary">
+
+  <!-- TOTAL -->
+  <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
+    <p class="text-sm text-slate-500 mb-2 font-bold">Total de Vagas</p>
+    <div class="flex items-end justify-between">
+      <span class="text-4xl font-bold text-slate-800">{{ summary.total }}</span>
+      <span class="text-slate-400 text-xl">🅿️</span>
+    </div>
   </div>
 
-  <div class="card free">
-    <h3>Vagas Livres</h3>
-    <strong>{{ summary.free }}</strong>
+  <!-- LIVRES -->
+  <div class="bg-emerald-50 p-6 rounded-2xl shadow-sm border border-emerald-200 hover:shadow-md transition">
+    <p class="text-sm text-emerald-700 mb-2 font-bold">Vagas Livres</p>
+    <div class="flex items-end justify-between">
+      <span class="text-4xl font-bold text-emerald-700">{{ summary.free }}</span>
+      <span class="text-emerald-500 text-xl">✅</span>
+    </div>
   </div>
 
-  <div class="card occupied">
-    <h3>Ocupadas</h3>
-    <strong>{{ summary.occupied }}</strong>
+  <!-- OCUPADAS -->
+  <div class="bg-rose-50 p-6 rounded-2xl shadow-sm border border-rose-200 hover:shadow-md transition">
+    <p class="text-sm text-rose-700 mb-2 font-bold">Ocupadas</p>
+    <div class="flex items-end justify-between">
+      <span class="text-4xl font-bold text-rose-700">{{ summary.occupied }}</span>
+      <span class="text-rose-500 text-xl">🚫</span>
+    </div>
   </div>
+
 </div>

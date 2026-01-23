@@ -113,6 +113,18 @@
         }
       }
     },
+    "/api/parking/sessions/active": {
+      "get": {
+        "tags": [
+          "Parking"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/parking-spots": {
       "post": {
         "tags": [

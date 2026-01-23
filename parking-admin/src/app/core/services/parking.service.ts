@@ -13,4 +13,19 @@ export class ParkingService {
   checkIn(request: CheckInRequest): Observable<CheckInResponse> {
     return this.http.post<CheckInResponse>(`${this.apiUrl}/check-in`, request);
   }
+
+  checkOut(vehicleId: string) {
+    return this.http.post<{
+      sessionId: string;
+      vehicleId: string;
+      duration: string;
+      amount: number;
+    }>(`${this.apiUrl}/check-out`, null, {
+      params: { vehicleId },
+    });
+  }
+
+  getActiveSessions() {
+    return this.http.get<any[]>(`${this.apiUrl}/sessions/active`);
+  }
 }

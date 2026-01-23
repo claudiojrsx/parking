@@ -1,0 +1,105 @@
+<div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+
+  <table mat-table [dataSource]="dataSource" class="w-full">
+
+    <!-- Placa -->
+    <ng-container matColumnDef="plate">
+      <th mat-header-cell *matHeaderCellDef
+        class="bg-slate-50 px-6 py-3 text-xs font-semibold text-slate-500 uppercase">
+        Placa
+      </th>
+      <td mat-cell *matCellDef="let row" class="px-6 py-4">
+        <mat-chip class="!bg-slate-100 !text-slate-700 font-semibold">
+          {{ row.plate }}
+        </mat-chip>
+      </td>
+    </ng-container>
+
+    <!-- Tipo -->
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef
+        class="bg-slate-50 px-6 py-3 text-xs font-semibold text-slate-500 uppercase">
+        Tipo
+      </th>
+      <td mat-cell *matCellDef="let row" class="px-6 py-4">
+        <mat-chip class="!bg-indigo-50 !text-indigo-700 font-medium">
+          {{ row.vehicleType }}
+        </mat-chip>
+      </td>
+    </ng-container>
+
+    <!-- Entrada -->
+    <ng-container matColumnDef="checkIn">
+      <th mat-header-cell *matHeaderCellDef
+        class="bg-slate-50 px-6 py-3 text-xs font-semibold text-slate-500 uppercase">
+        Entrada
+      </th>
+      <td mat-cell *matCellDef="let row" class="px-6 py-4 text-sm text-slate-600">
+        {{ row.checkInAt | date:'short' }}
+      </td>
+    </ng-container>
+
+    <!-- Ação -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef
+        class="bg-slate-50 px-6 py-3 text-xs font-semibold text-slate-500 uppercase text-right">
+        Ação
+      </th>
+      <td mat-cell *matCellDef="let row" class="px-6 py-4 text-right group">
+        <button (click)="checkOut(row.vehicleId)" [disabled]="loading" class="relative inline-flex w-full items-center justify-center
+         overflow-hidden rounded-lg
+         bg-red-500 px-4 py-2
+         text-sm font-semibold text-white
+         shadow-[0_2px_8px_rgba(244,63,94,0.35)]
+         transition-all duration-300
+         hover:bg-red-900
+         active:translate-y-0
+         disabled:cursor-not-allowed disabled:opacity-50">
+
+          <!-- Shine effect -->
+          <span class="pointer-events-none absolute inset-0
+           -translate-x-full
+           bg-gradient-to-r from-transparent via-white/20 to-transparent
+           transition-transform duration-700
+           group-hover:translate-x-full">
+          </span>
+
+          <span class="relative z-10">🚪 Check-out</span>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+      class="border-b border-slate-100 transition hover:bg-slate-50">
+    </tr>
+
+  </table>
+
+  <!-- Resultado -->
+  <div *ngIf="result" class="m-6 rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
+
+    <h3 class="mb-3 flex items-center gap-2 font-semibold text-emerald-700">
+      <span class="text-lg">✅</span>
+      Check-out realizado
+    </h3>
+
+    <div class="flex gap-8 text-sm text-emerald-700">
+      <div>
+        <div class="text-xs uppercase text-emerald-600 font-bold">⏱️ Duração</div>
+        <strong>{{ result.duration }}</strong>
+      </div>
+
+      <div>
+        <div class="text-xs uppercase text-emerald-600 font-bold">💰 Valor</div>
+        <strong>R$ {{ result.amount | number:'1.2-2' }}</strong>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<mat-paginator class="mt-4 rounded-2xl border border-slate-200 bg-white px-2 shadow-sm" [pageSize]="5"
+  [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+</mat-paginator>

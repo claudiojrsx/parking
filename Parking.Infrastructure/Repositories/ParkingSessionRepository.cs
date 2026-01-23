@@ -20,4 +20,11 @@ public class ParkingSessionRepository
                 s.VehicleId == vehicleId &&
                 s.ExitTime == null);
     }
+
+    public async Task<IEnumerable<ParkingSession>> GetActiveAsync()
+    {
+        return await _context.ParkingSessions
+            .Where(s => s.ExitTime == null)
+            .ToListAsync();
+    }
 }

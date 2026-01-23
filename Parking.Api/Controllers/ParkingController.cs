@@ -39,5 +39,13 @@
             var result = await _parkingService.CheckOutAsync(vehicleId);
             return Ok(result);
         }
+
+        [Authorize(Roles = $"{Roles.Admin},{Roles.Operator}")]
+        [HttpGet("sessions/active")]
+        public async Task<IActionResult> GetActiveSessions()
+        {
+            var sessions = await _parkingService.GetActiveSessionsAsync();
+            return Ok(sessions);
+        }
     }
 }

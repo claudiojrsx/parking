@@ -73,4 +73,28 @@ public class ParkingService(
             Amount = amount
         };
     }
+
+    public async Task<IEnumerable<ActiveParkingSessionDto>> GetActiveSessionsAsync()
+    {
+        var sessions = await _sessionRepo.GetActiveAsync();
+
+        var result = new List<ActiveParkingSessionDto>();
+
+        foreach (var session in sessions)
+        {
+            var vehicle = await _vehicleRepo.GetByIdAsync(session.VehicleId)
+                ?? throw new InvalidOperationException("Vehicle not found");
+
+            result.Add(new ActiveParkingSessionDto
+            {
+                SessionId = session.Id,
+                VehicleId = vehicle.Id,
+                Plate = vehicle.LicensePlate.Value,
+                VehicleType = vehicle.Type,
+                CheckInAt = session.EntryTime
+            });
+        }
+
+        return result;
+    }
 }

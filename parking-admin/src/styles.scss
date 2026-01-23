@@ -1,8 +1,8 @@
+@use '@angular/material' as mat;
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@use '@angular/material' as mat;
 
 /* Tema Material */
 html {
@@ -24,80 +24,44 @@ html {
   padding: 0;
 }
 
-html,
-body {
-  height: 100%;
-  background-color: var(--mat-sys-surface);
-}
-
-body {
-  background-color: var(--mat-sys-surface);
-  color: var(--mat-sys-on-surface);
-  font: var(--mat-sys-body-medium);
-  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
-  line-height: 1.5;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.full-width {
-  width: 100%;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-
-  padding: 12px 20px;
-  border-radius: 8px;
-  border: none;
-
-  font-weight: 600;
-  font-size: 14px;
-
-  cursor: pointer;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
-}
-
 .btn-primary {
-  background-color: var(--mat-sys-primary);
-  color: var(--mat-sys-on-primary);
-
-  &:hover {
-    background-color: color-mix(
-      in srgb,
-      var(--mat-sys-primary) 85%,
-      black
-    );
-  }
-}
-
-.btn-secondary {
-  background-color: var(--mat-sys-secondary-container);
-  color: var(--mat-sys-on-secondary-container);
-}
-
-.mat-mdc-table {
-  background: var(--mat-sys-surface);
-  border-radius: 12px;
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 600;
+  position: relative;
   overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
 
-.mat-mdc-header-row {
-  background: var(--mat-sys-surface-variant);
+.btn-primary:hover {
+  background: #1e3a8a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
 }
 
-.mat-mdc-row:hover {
-  background: var(--mat-sys-surface-variant);
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
 
-.card {
-  background: var(--mat-sys-surface);
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
 }
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+

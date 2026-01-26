@@ -1,0 +1,16 @@
+<nav class="mb-6 flex items-center text-sm text-slate-500">
+  <ng-container *ngFor="let crumb of breadcrumbs; let last = last">
+    <a
+      *ngIf="!last"
+      [routerLink]="crumb.url"
+      class="hover:text-blue-600 transition font-medium">
+      {{ crumb.label }}
+    </a>
+
+    <span *ngIf="last" class="font-semibold text-slate-700">
+      {{ crumb.label }}
+    </span>
+
+    <span *ngIf="!last" class="mx-2 text-slate-400">/</span>
+  </ng-container>
+</nav>

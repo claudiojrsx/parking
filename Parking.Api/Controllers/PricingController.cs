@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Parking.Api.Auth;
 using Parking.Api.DTOs;
 using Parking.Infrastructure.Context;
@@ -42,6 +43,23 @@ namespace Parking.Api.Controllers
 
             return Ok();
         }
-    }
 
+        [HttpGet]
+        public async Task<ActionResult<PricingResponse>> GetCurrent()
+        {
+            var pricing = await _context.PricingConfigurations
+                .AsNoTracking()
+                .FirstOrDefaultAsync(p => p.IsActive);
+
+            if (pricing is null)
+                return NotFound();
+
+            return Ok(new PricingResponse
+            {
+                Motorcycle = pricing.MotorcycleHourlyRate,
+                Car = pricing.CarHourlyRate,
+                Truck = pricing.TruckHourlyRate
+            });
+        }
+    }
 }

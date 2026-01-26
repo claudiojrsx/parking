@@ -25,6 +25,7 @@ export const routes: Routes = [
 
       {
         path: 'dashboard',
+        data: { breadcrumb: 'Dashboard' },
         loadComponent: () =>
           import('./features/dashboard/dashboard.component').then(
             (m) => m.DashboardComponent,
@@ -33,31 +34,43 @@ export const routes: Routes = [
 
       {
         path: 'admin',
-        data: { role: 'Admin' },
+        data: { role: 'Admin', breadcrumb: 'Admin' },
         loadComponent: () =>
           import('./features/admin/admin.component').then(
             (m) => m.AdminComponent,
           ),
       },
+
+      // 🔹 PARKING (rota pai)
+      {
+        path: 'parking',
+        data: { breadcrumb: 'Parking' },
+        children: [
+          {
+            path: 'check-in',
+            data: { breadcrumb: 'Check-in' },
+            loadComponent: () =>
+              import(
+                './features/parking-check-in/parking-check-in.component'
+              ).then((m) => m.ParkingCheckInComponent),
+          },
+          {
+            path: 'check-out',
+            data: { breadcrumb: 'Check-out' },
+            loadComponent: () =>
+              import(
+                './features/parking-check-out/parking-check-out.component'
+              ).then((m) => m.ParkingCheckOutComponent),
+          },
+        ],
+      },
+
       {
         path: 'parking-spots',
+        data: { breadcrumb: 'Vagas de Estacionamento' },
         loadComponent: () =>
           import('./features/parking-spots/parking-spots.component').then(
             (m) => m.ParkingSpotsComponent,
-          ),
-      },
-      {
-        path: 'parking/check-in',
-        loadComponent: () =>
-          import('./features/parking-check-in/parking-check-in.component').then(
-            (m) => m.ParkingCheckInComponent,
-          ),
-      },
-      {
-        path: 'parking/check-out',
-        loadComponent: () =>
-          import('./features/parking-check-out/parking-check-out.component').then(
-            (m) => m.ParkingCheckOutComponent,
           ),
       },
     ],

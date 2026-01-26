@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
+import { BreadcrumbComponent } from "../../shared/components/breadcrumb/breadcrumb.components";
 
 @Component({
   selector: 'app-main-layout',
@@ -20,7 +21,8 @@ import { Router } from '@angular/router';
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
-  ],
+    BreadcrumbComponent
+],
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.scss'],
 })

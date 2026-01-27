@@ -1,97 +1,87 @@
-<div class="max-w-3xl mx-auto">
-
-  <!-- CARD -->
-  <div
-    class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8">
+<div class="max-w-4xl mx-auto">
+  <div class="rounded-2xl border border-slate-200 bg-white shadow-lg p-8
+           dark:border-slate-700 dark:bg-slate-900">
 
     <!-- HEADER -->
-    <div class="mb-6">
-      <h2 class="text-xl font-semibold text-slate-800">
+    <div class="mb-8">
+      <h2 class="text-xl font-semibold text-slate-800 dark:text-slate-100">
         💰 Configuração de preços
       </h2>
-      <p class="text-sm text-slate-500 mt-1">
-        Defina o valor da hora por tipo de veículo
+      <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">
+        Defina o valor por hora para cada tipo de veículo
       </p>
     </div>
 
-    <!-- LOADING -->
-    <div *ngIf="loading" class="flex justify-center py-10">
-      <mat-spinner diameter="40"></mat-spinner>
-    </div>
-
     <!-- FORM -->
-    <form
-      *ngIf="!loading"
-      [formGroup]="form"
-      (ngSubmit)="save()"
-      class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <form [formGroup]="form" (ngSubmit)="save()" class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-      <!-- MOTO -->
-      <mat-form-field appearance="outline">
-        <mat-label>🏍️ Moto (R$/hora)</mat-label>
-        <input
-          matInput
-          type="number"
-          formControlName="motorcycle"
-          placeholder="Ex: 8.00" />
-        <mat-error *ngIf="form.controls.motorcycle.invalid">
-          Valor inválido
-        </mat-error>
-      </mat-form-field>
+      <!-- CARD BASE -->
+      <ng-container *ngFor="let item of [
+        { key: 'motorcycle', label: 'Moto', icon: '🏍️' },
+        { key: 'car', label: 'Carro', icon: '🚗' },
+        { key: 'truck', label: 'Caminhão', icon: '🚚' }
+      ]">
 
-      <!-- CARRO -->
-      <mat-form-field appearance="outline">
-        <mat-label>🚗 Carro (R$/hora)</mat-label>
-        <input
-          matInput
-          type="number"
-          formControlName="car"
-          placeholder="Ex: 12.00" />
-        <mat-error *ngIf="form.controls.car.invalid">
-          Valor inválido
-        </mat-error>
-      </mat-form-field>
+        <div class="rounded-xl border border-slate-200 bg-slate-50 p-5 transition
+                 hover:shadow-md
+                 dark:border-slate-700 dark:bg-slate-800">
 
-      <!-- CAMINHÃO -->
-      <mat-form-field appearance="outline">
-        <mat-label>🚚 Caminhão (R$/hora)</mat-label>
-        <input
-          matInput
-          type="number"
-          formControlName="truck"
-          placeholder="Ex: 20.00" />
-        <mat-error *ngIf="form.controls.truck.invalid">
-          Valor inválido
-        </mat-error>
-      </mat-form-field>
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-2xl">{{ item.icon }}</span>
+            <div>
+              <p class="font-semibold text-slate-800 dark:text-slate-100">
+                {{ item.label }}
+              </p>
+              <p class="text-xs text-slate-500 dark:text-slate-400">
+                Valor por hora
+              </p>
+            </div>
+          </div>
+
+          <div class="relative">
+            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 dark:text-slate-400">
+              R$
+            </span>
+
+            <input type="number" [formControlName]="item.key" placeholder="0,00" class="w-full pl-10 pr-16 py-3 rounded-lg border border-slate-300
+                     bg-white text-slate-800
+                     focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500
+                     outline-none text-lg font-medium
+                     dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100" />
+
+            <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs
+                     text-slate-500 dark:text-slate-400">
+              /hora
+            </span>
+          </div>
+
+          <p *ngIf="form.controls[item.key].invalid && form.controls[item.key].touched"
+            class="mt-2 text-xs text-rose-600 dark:text-rose-400">
+            Valor inválido
+          </p>
+        </div>
+
+      </ng-container>
 
       <!-- ACTIONS -->
-      <div class="md:col-span-3 flex justify-end gap-4 mt-4">
-
-        <button
-          mat-raised-button
-          color="primary"
-          type="submit"
-          [disabled]="loading || form.invalid"
-          class="px-8 py-2 rounded-xl font-semibold shadow-sm">
-          <mat-icon class="mr-2">save</mat-icon>
-          Salvar preços
+      <div class="md:col-span-3 flex justify-end mt-6">
+        <button type="submit" [disabled]="form.invalid || loading" class="flex items-center gap-2 px-8 py-3 rounded-xl
+                 bg-indigo-600 text-white font-semibold
+                 hover:bg-indigo-700 disabled:opacity-50 transition">
+          💾 Salvar preços
         </button>
-
       </div>
     </form>
 
     <!-- SUCCESS -->
-    <div
-      *ngIf="success"
-      class="mt-6 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-700">
+    <div *ngIf="success" class="mt-6 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-700
+             dark:border-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300">
       ✅ Preços atualizados com sucesso
     </div>
 
     <!-- ERROR -->
-    <div
-      *ngIf="error"
-      class="mt-6 rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-700">
+    <div *ngIf="error" class="mt-6 rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-700
+             dark:border-rose-800 dark:bg-rose-900/30 dark:text-rose-300">
       ❌ {{ error }}
     </div>
 

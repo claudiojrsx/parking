@@ -1,71 +1,87 @@
-<mat-toolbar color="primary" class="topbar">
-  <!-- Logo -->
-  <div class="logo">
-    🚗 <strong>Parking</strong>
-  </div>
+<div class="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors">
 
-  <nav class="menu">
-    <button mat-button routerLink="/dashboard" routerLinkActive="active">
-      Dashboard
-    </button>
+  <mat-toolbar color="primary" class="topbar">
+    <!-- Logo -->
+    <div class="logo">
+      🚗 <strong>Parking</strong>
+    </div>
 
-    <button mat-button routerLink="/parking-spots" routerLinkActive="active">
-      Vagas
-    </button>
-
-    <button mat-button [matMenuTriggerFor]="parkingMenu">
-      Parking
-      <mat-icon>arrow_drop_down</mat-icon>
-    </button>
-
-    <mat-menu #parkingMenu="matMenu">
-      <button mat-menu-item routerLink="/parking/check-in">
-        <mat-icon>login</mat-icon>
-        Check-in
+    <nav class="menu">
+      <button mat-button routerLink="/dashboard" routerLinkActive="active">
+        Dashboard
       </button>
 
-      <button mat-menu-item routerLink="/parking/check-out">
+      <button mat-button routerLink="/parking-spots" routerLinkActive="active">
+        Vagas
+      </button>
+
+      <button mat-button [matMenuTriggerFor]="parkingMenu">
+        Parking
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+
+      <mat-menu #parkingMenu="matMenu">
+        <button mat-menu-item routerLink="/parking/check-in">
+          <mat-icon>login</mat-icon>
+          Check-in
+        </button>
+
+        <button mat-menu-item routerLink="/parking/check-out">
+          <mat-icon>logout</mat-icon>
+          Check-out
+        </button>
+      </mat-menu>
+
+      <button mat-button routerLink="/admin" routerLinkActive="active">
+        Admin
+      </button>
+
+      <button mat-button routerLink="/pricing" routerLinkActive="active">
+        Pricing
+      </button>
+    </nav>
+
+    <span class="spacer"></span>
+
+    <button mat-icon-button (click)="toggleDarkMode()" class="mr-2" matTooltip="Alternar tema">
+
+      <mat-icon>
+        {{ isDarkMode ? 'light_mode' : 'dark_mode' }}
+      </mat-icon>
+
+    </button>
+
+    <button mat-button [matMenuTriggerFor]="userMenu" class="user-btn">
+      <mat-icon>account_circle</mat-icon>
+      Minha conta
+    </button>
+
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item routerLink="/profile">
+        <mat-icon>person</mat-icon>
+        Perfil
+      </button>
+
+      <button mat-menu-item (click)="logout()">
         <mat-icon>logout</mat-icon>
-        Check-out
+        Sair
       </button>
     </mat-menu>
+  </mat-toolbar>
 
-    <button mat-button routerLink="/admin" routerLinkActive="active">
-      Admin
-    </button>
-  </nav>
+  <!-- CONTAINER GLOBAL -->
+  <div class="max-w-[1440px] mx-auto px-6">
 
-  <span class="spacer"></span>
+    <!-- Breadcrumb -->
+    <div class="pt-4">
+      <app-breadcrumb />
+    </div>
 
-  <button mat-button [matMenuTriggerFor]="userMenu" class="user-btn">
-    <mat-icon>account_circle</mat-icon>
-    Minha conta
-  </button>
+    <!-- Conteúdo -->
+    <main class="py-6">
+      <router-outlet />
+    </main>
 
-  <mat-menu #userMenu="matMenu">
-    <button mat-menu-item routerLink="/profile">
-      <mat-icon>person</mat-icon>
-      Perfil
-    </button>
-
-    <button mat-menu-item (click)="logout()">
-      <mat-icon>logout</mat-icon>
-      Sair
-    </button>
-  </mat-menu>
-</mat-toolbar>
-
-<!-- CONTAINER GLOBAL -->
-<div class="max-w-[1440px] mx-auto px-6">
-
-  <!-- Breadcrumb -->
-  <div class="pt-4">
-    <app-breadcrumb />
   </div>
-
-  <!-- Conteúdo -->
-  <main class="py-6">
-    <router-outlet />
-  </main>
 
 </div>

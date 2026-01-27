@@ -1,14 +1,9 @@
-// src/app/core/models/pricing.model.ts
-
-export type VehicleType = 'CAR' | 'MOTORCYCLE' | 'TRUCK';
-
-export interface Pricing {
-  id?: number;
-  vehicleType: VehicleType;
-
-  pricePerHour: number;
-  pricePerDay: number;
-
-  toleranceMinutes: number; // ex: 10 min grátis
-  active: boolean;
+/**
+ * Modelo usado APENAS pela tela de configuração de preços
+ * (formulário agregado)
+ */
+export interface PricingConfig {
+  motorcycle: number;
+  car: number;
+  truck: number;
 }

@@ -190,6 +190,26 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Parking.Api.Controllers.PricingController",
+    "Method": "GetCurrent",
+    "RelativePath": "api/pricing/current",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Parking.Api.DTOs.PricingResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "Parking.Api.Controllers.TestController",
     "Method": "AdminOnly",
     "RelativePath": "api/test/admin",

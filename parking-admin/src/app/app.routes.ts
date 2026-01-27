@@ -41,6 +41,15 @@ export const routes: Routes = [
           ),
       },
 
+      {
+        path: 'pricing',
+        data: { breadcrumb: 'Pricing' },
+        loadComponent: () =>
+          import('./features/admin/pricing/pricing.component').then(
+            (m) => m.PricingComponent,
+          ),
+      },
+
       // 🔹 PARKING (rota pai)
       {
         path: 'parking',

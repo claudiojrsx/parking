@@ -1,6 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { Subject, takeUntil } from 'rxjs';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -9,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { PricingService } from '../../../core/services/pricing.service';
+import { Pricing, VehicleType } from '../../../core/models/pricing.model';
 
 @Component({
   standalone: true,
@@ -24,16 +31,14 @@ import { PricingService } from '../../../core/services/pricing.service';
   ],
   templateUrl: './pricing.component.html',
 })
-export class PricingComponent implements OnInit {
+export class PricingComponent implements OnInit, OnDestroy {
   loading = false;
   success = false;
   error = '';
 
-  form = this.fb.group({
-    motorcycle: [0, [Validators.required, Validators.min(0.01)]],
-    car: [0, [Validators.required, Validators.min(0.01)]],
-    truck: [0, [Validators.required, Validators.min(0.01)]],
-  });
+  form!: FormGroup;
+
+  private destroy$ = new Subject<void>();
 
   constructor(
     private fb: FormBuilder,
@@ -41,44 +46,80 @@ export class PricingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.form = this.fb.group({
+      motorcycle: [0, [Validators.required, Validators.min(0.01)]],
+      car: [0, [Validators.required, Validators.min(0.01)]],
+      truck: [0, [Validators.required, Validators.min(0.01)]],
+    });
+
     this.loadCurrentPricing();
 
-    // reseta feedback ao editar
-    this.form.valueChanges.subscribe(() => {
+    this.form.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(() => {
       this.success = false;
       this.error = '';
     });
   }
 
-  loadCurrentPricing() {
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  loadCurrentPricing(): void {
     this.loading = true;
 
     this.pricingService.getCurrent().subscribe({
       next: (data) => {
-        this.form.patchValue(data);
+        this.form.patchValue({
+          motorcycle: data.motorcycle,
+          car: data.car,
+          truck: data.truck,
+        });
       },
-      error: () => {
+      error: (err) => {
+        console.error(err);
         this.error = 'Erro ao carregar preços atuais';
+        this.loading = false;
       },
       complete: () => (this.loading = false),
     });
   }
 
-  save() {
+  save(): void {
     if (this.form.invalid) return;
 
     this.loading = true;
     this.success = false;
     this.error = '';
 
-    this.pricingService.create(this.form.value).subscribe({
+    const payload = this.form.getRawValue();
+
+    this.pricingService.save(payload).subscribe({
       next: () => {
         this.success = true;
       },
-      error: () => {
+      error: (err) => {
+        console.error(err);
         this.error = 'Erro ao salvar preços';
+        this.loading = false;
       },
       complete: () => (this.loading = false),
     });
+  }
+
+  // ---------- helpers ----------
+
+  private getPrice(prices: Pricing[], type: VehicleType): number {
+    return prices.find((p) => p.vehicleType === type)?.pricePerHour ?? 0;
+  }
+
+  private buildPricing(type: VehicleType, value: number): Pricing {
+    return {
+      vehicleType: type,
+      pricePerHour: value,
+      pricePerDay: 0,
+      toleranceMinutes: 0,
+      active: true,
+    };
   }
 }

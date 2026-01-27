@@ -291,6 +291,35 @@
         }
       }
     },
+    "/api/pricing/current": {
+      "get": {
+        "tags": [
+          "Pricing"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PricingResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PricingResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PricingResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/test/auth": {
       "get": {
         "tags": [
@@ -441,6 +470,24 @@
           "Truck"
         ],
         "type": "string"
+      },
+      "PricingResponse": {
+        "type": "object",
+        "properties": {
+          "motorcycle": {
+            "type": "number",
+            "format": "double"
+          },
+          "car": {
+            "type": "number",
+            "format": "double"
+          },
+          "truck": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
       },
       "VehicleType": {
         "enum": [

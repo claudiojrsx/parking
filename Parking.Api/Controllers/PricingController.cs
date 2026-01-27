@@ -20,12 +20,16 @@ namespace Parking.Api.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = $"{Roles.Admin},{Roles.Operator}")]
         [HttpPost]
-        public async Task<IActionResult> Create(CreatePricingRequest request)
+        public async Task<IActionResult> Create([FromBody] CreatePricingRequest request)
         {
-            // Desativa preços antigos
-            var actives = _context.PricingConfigurations
-                .Where(p => p.IsActive);
+            if (request.Motorcycle <= 0 || request.Car <= 0 || request.Truck <= 0)
+                return BadRequest("Os valores devem ser maiores que zero.");
+
+            var actives = await _context.PricingConfigurations
+                .Where(p => p.IsActive)
+                .ToListAsync();
 
             foreach (var p in actives)
                 p.IsActive = false;
@@ -44,7 +48,8 @@ namespace Parking.Api.Controllers
             return Ok();
         }
 
-        [HttpGet]
+        [Authorize(Roles = $"{Roles.Admin},{Roles.Operator}")]
+        [HttpGet("current")]
         public async Task<ActionResult<PricingResponse>> GetCurrent()
         {
             var pricing = await _context.PricingConfigurations

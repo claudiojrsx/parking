@@ -1,4 +1,4 @@
-<div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
+<div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
 
   <table mat-table [dataSource]="dataSource" class="w-full">
 
@@ -46,25 +46,11 @@
         Ação
       </th>
       <td mat-cell *matCellDef="let row" class="px-6 py-4 text-right group">
-        <button (click)="checkOut(row.vehicleId)" [disabled]="loading" class="relative inline-flex w-full items-center justify-center
-         overflow-hidden rounded-lg
-         bg-red-500 px-4 py-2
-         text-sm font-semibold text-white
-         shadow-[0_2px_8px_rgba(244,63,94,0.35)]
-         transition-all duration-300
-         hover:bg-red-900
-         active:translate-y-0
-         disabled:cursor-not-allowed disabled:opacity-50">
-
-          <!-- Shine effect -->
-          <span class="pointer-events-none absolute inset-0
-           -translate-x-full
-           bg-gradient-to-r from-transparent via-white/20 to-transparent
-           transition-transform duration-700
-           group-hover:translate-x-full">
-          </span>
-
-          <span class="relative z-10">🚪 Check-out</span>
+        <button (click)="checkOut(row.vehicleId)" [disabled]="loading"
+          class="flex items-center gap-2 px-10 py-3 rounded-xl
+                 bg-red-600 text-white font-semibold shadow-md
+                 hover:bg-red-700 disabled:opacity-50 transition">
+          <span class="relative z-10">Check-out</span>
         </button>
       </td>
     </ng-container>

@@ -1,84 +1,85 @@
-<div class="max-w-lg mx-auto mt-12">
-  <!-- CARD -->
-  <div class="bg-white border border-slate-200 rounded-2xl shadow-lg p-6 md:p-8">
+<div class="max-w-lg mx-auto mt-12 p-6 md:p-8 card card-hover">
+  <!-- Header -->
+  <div class="text-center mb-8">
+    <div class="text-4xl mb-2">🚗</div>
+    <h2 class="text-2xl font-semibold text-slate-800 dark:text-slate-100">
+      Check-in de Veículo
+    </h2>
+    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">
+      Registre a entrada de um veículo no estacionamento
+    </p>
+  </div>
 
-    <!-- Header -->
-    <div class="text-center mb-8">
-      <div class="text-4xl mb-2">🚗</div>
-      <h2 class="text-2xl font-semibold text-slate-800">Check-in de Veículo</h2>
-      <p class="text-sm text-slate-500 mt-1">
-        Registre a entrada de um veículo no estacionamento
-      </p>
+  <form class="space-y-6">
+
+    <!-- PLACA -->
+    <div>
+      <label for="plate" class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+        Placa do veículo
+      </label>
+
+      <input (input)="plate = plate.toUpperCase()" id="plate" type="text" [(ngModel)]="plate" name="plate" required
+        placeholder="ABC-1234" class="w-full rounded-xl border px-4 py-3 text-sm transition
+                 bg-white dark:bg-slate-800
+                 text-slate-700 dark:text-slate-200
+                 border-slate-200 dark:border-slate-600
+                 placeholder-slate-400 dark:placeholder-slate-500
+                 focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500" />
     </div>
 
-    <form class="space-y-6">
+    <!-- TIPO DE VEÍCULO -->
+    <div>
+      <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
+        Tipo de veículo
+      </label>
 
-      <!-- PLACA -->
-      <div>
-        <label for="plate" class="block text-sm font-semibold text-slate-700 mb-1.5">
-          Placa do veículo
-        </label>
-        <input (input)="plate = plate.toUpperCase()" id="plate" type="text" [(ngModel)]="plate" name="plate" required
-          placeholder="ABC-1234" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-700
-                 focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500
-                 transition" />
+      <div class="grid grid-cols-3 gap-2">
+        <button type="button" (click)="vehicleType = VehicleType.Car" class="filter-btn"
+          [ngClass]="{ 'filter-btn-active': vehicleType === VehicleType.Car }">
+          🚗 Carro
+        </button>
+
+        <button type="button" (click)="vehicleType = VehicleType.Motorcycle" class="filter-btn"
+          [ngClass]="{ 'filter-btn-active': vehicleType === VehicleType.Motorcycle }">
+          🏍 Moto
+        </button>
+
+        <button type="button" (click)="vehicleType = VehicleType.Truck" class="filter-btn"
+          [ngClass]="{ 'filter-btn-active': vehicleType === VehicleType.Truck }">
+          🚚 Caminhão
+        </button>
       </div>
-
-      <!-- TIPO DE VEÍCULO (visual, moderno) -->
-      <div>
-        <label class="block text-sm font-semibold text-slate-700 mb-2">
-          Tipo de veículo
-        </label>
-
-        <div class="grid grid-cols-3 gap-2">
-          <button type="button" (click)="vehicleType = VehicleType.Car"
-            [class.border-blue-600]="vehicleType === VehicleType.Car"
-            [class.bg-blue-50]="vehicleType === VehicleType.Car"
-            class="rounded-xl border p-3 text-sm font-medium transition text-slate-600 hover:bg-slate-100">
-            🚗 Carro
-          </button>
-
-          <button type="button" (click)="vehicleType = VehicleType.Motorcycle"
-            [class.border-blue-600]="vehicleType === VehicleType.Motorcycle"
-            [class.bg-blue-50]="vehicleType === VehicleType.Motorcycle"
-            class="rounded-xl border p-3 text-sm font-medium transition text-slate-600 hover:bg-slate-100">
-            🏍 Moto
-          </button>
-
-          <button type="button" (click)="vehicleType = VehicleType.Truck"
-            [class.border-blue-600]="vehicleType === VehicleType.Truck"
-            [class.bg-blue-50]="vehicleType === VehicleType.Truck"
-            class="rounded-xl border p-3 text-sm font-medium transition text-slate-600 hover:bg-slate-100">
-            🚚 Caminhão
-          </button>
-        </div>
-      </div>
-
-      <!-- BOTÃO -->
-      <button type="button" (click)="openConfirm()" [disabled]="loading || !plate" class="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold
-         shadow-md hover:bg-blue-700 transition disabled:opacity-50 btn-primary">
-        {{ loading ? 'Registrando...' : 'Registrar Entrada' }}
-      </button>
-
-    </form>
-
-    <app-confirm-dialog [open]="confirmOpen" title="Confirmar check-in?"
-      [description]="'O veículo ' + plate.toUpperCase() + ' será registrado no estacionamento.'" confirmText="Confirmar"
-      cancelText="Cancelar" (confirm)="handleConfirm()" (cancel)="confirmOpen = false" />
-
-    <!-- FEEDBACK -->
-    <div class="mt-6 space-y-3">
-
-      <div *ngIf="successMessage" class="bg-green-50 border border-green-200 text-green-700
-               px-4 py-3 rounded-xl text-sm font-medium">
-        ✅ {{ successMessage }}
-      </div>
-
-      <div *ngIf="errorMessage" class="bg-red-50 border border-red-200 text-red-700
-               px-4 py-3 rounded-xl text-sm font-medium">
-        ❌ {{ errorMessage }}
-      </div>
-
     </div>
+
+    <!-- BOTÃO -->
+    <button type="button" (click)="openConfirm()" [disabled]="loading || !plate" class="w-full bg-blue-600 hover:bg-blue-700
+               text-white py-3 rounded-xl font-semibold shadow-md
+               transition disabled:opacity-50">
+      {{ loading ? 'Registrando...' : 'Registrar Entrada' }}
+    </button>
+
+  </form>
+
+  <app-confirm-dialog [open]="confirmOpen" title="Confirmar check-in?"
+    [description]="'O veículo ' + plate.toUpperCase() + ' será registrado no estacionamento.'" confirmText="Confirmar"
+    cancelText="Cancelar" (confirm)="handleConfirm()" (cancel)="confirmOpen = false" />
+
+  <!-- FEEDBACK -->
+  <div class="mt-6 space-y-3">
+
+    <div *ngIf="successMessage" class="px-4 py-3 rounded-xl text-sm font-medium
+               bg-emerald-50 dark:bg-emerald-900/30
+               border border-emerald-200 dark:border-emerald-800
+               text-emerald-700 dark:text-emerald-300">
+      ✅ {{ successMessage }}
+    </div>
+
+    <div *ngIf="errorMessage" class="px-4 py-3 rounded-xl text-sm font-medium
+               bg-rose-50 dark:bg-rose-900/30
+               border border-rose-200 dark:border-rose-800
+               text-rose-700 dark:text-rose-300">
+      ❌ {{ errorMessage }}
+    </div>
+
   </div>
 </div>

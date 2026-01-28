@@ -36,18 +36,32 @@ export const routes: Routes = [
         path: 'admin',
         data: { role: 'Admin', breadcrumb: 'Admin' },
         loadComponent: () =>
-          import('./features/admin/admin.component').then(
+          import('./features/layout/router-outlet/admin/admin.component').then(
             (m) => m.AdminComponent,
           ),
-      },
-
-      {
-        path: 'pricing',
-        data: { breadcrumb: 'Pricing' },
-        loadComponent: () =>
-          import('./features/admin/pricing/pricing.component').then(
-            (m) => m.PricingComponent,
-          ),
+        children: [
+          {
+            path: '',
+            pathMatch: 'full',
+            redirectTo: 'pricing',
+          },
+          {
+            path: 'pricing',
+            data: { breadcrumb: 'Pricing' },
+            loadComponent: () =>
+              import('./features/layout/router-outlet/admin/pricing/pricing.component').then(
+                (m) => m.PricingComponent,
+              ),
+          },
+          {
+            path: 'users/create',
+            data: { breadcrumb: 'Criar Usuário' },
+            loadComponent: () =>
+              import('./features/layout/router-outlet/admin/users/create-user/create-user.component').then(
+                (m) => m.CreateUserComponent,
+              ),
+          },
+        ],
       },
 
       // 🔹 PARKING (rota pai)
@@ -59,17 +73,17 @@ export const routes: Routes = [
             path: 'check-in',
             data: { breadcrumb: 'Check-in' },
             loadComponent: () =>
-              import(
-                './features/parking-check-in/parking-check-in.component'
-              ).then((m) => m.ParkingCheckInComponent),
+              import('./features/parking-check-in/parking-check-in.component').then(
+                (m) => m.ParkingCheckInComponent,
+              ),
           },
           {
             path: 'check-out',
             data: { breadcrumb: 'Check-out' },
             loadComponent: () =>
-              import(
-                './features/parking-check-out/parking-check-out.component'
-              ).then((m) => m.ParkingCheckOutComponent),
+              import('./features/parking-check-out/parking-check-out.component').then(
+                (m) => m.ParkingCheckOutComponent,
+              ),
           },
         ],
       },

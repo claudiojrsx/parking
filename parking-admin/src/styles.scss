@@ -8,29 +8,23 @@
 
 /* Tema Material */
 html {
-  @include mat.theme((
-    color: (
-      primary: mat.$azure-palette,
-      tertiary: mat.$blue-palette,
-    ),
-    typography: Roboto,
-    density: 0,
-  ));
+  @include mat.theme((color: (primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    ));
 }
 
-$light-theme: mat.define-theme((
-  color: (
-    theme-type: light,
-    primary: mat.$blue-palette,
-  ),
-));
+$light-theme: mat.define-theme((color: (theme-type: light,
+        primary: mat.$blue-palette,
+      ),
+    ));
 
-$dark-theme: mat.define-theme((
-  color: (
-    theme-type: dark,
-    primary: mat.$blue-palette,
-  ),
-));
+$dark-theme: mat.define-theme((color: (theme-type: dark,
+        primary: mat.$blue-palette,
+      ),
+    ));
 
 @include mat.all-component-themes($light-theme);
 
@@ -85,4 +79,111 @@ $dark-theme: mat.define-theme((
 
 .btn-primary:hover::before {
   left: 100%;
+}
+
+.card {
+  @apply bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-md text-slate-600 dark:text-slate-300 transition;
+}
+
+.card-hover {
+  @apply hover:border-blue-500 hover:text-blue-700 dark:hover:bg-blue-900/30 dark:hover:border-blue-400 dark:hover:text-blue-300;
+}
+
+.input {
+  @apply w-full px-4 py-2 rounded-lg border bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 border-solid transition;
+}
+
+.filter-btn {
+  @apply rounded-xl border p-3 text-sm font-medium transition text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:bg-blue-50 hover:border-blue-500 hover:text-blue-700 dark:hover:bg-blue-900/30 dark:hover:border-blue-400 dark:hover:text-blue-300;
+}
+
+.filter-btn-active {
+  @apply bg-blue-50 border-blue-600 text-blue-700 dark:bg-blue-900/40 dark:border-blue-400 dark:text-blue-300 border-solid;
+}
+
+/* Modo claro (default) */
+.mat-mdc-table,
+.mat-mdc-paginator {
+  background-color: white !important;
+}
+
+/* 🌙 Modo escuro */
+.dark .mat-mdc-table,
+.dark .mat-mdc-paginator {
+  background-color: #0f172a !important;
+  /* slate-900 */
+  color: #e2e8f0 !important;
+  /* slate-200 */
+}
+
+.dark .mat-mdc-header-row {
+  background-color: #1e293b !important;
+  /* slate-800 */
+}
+
+.dark .mat-mdc-row {
+  border-color: #1e293b !important;
+}
+
+.dark .mat-mdc-paginator .mat-mdc-icon-button {
+  color: #cbd5e1 !important;
+}
+
+.dark .mat-mdc-chip {
+  background-color: #1e293b !important;
+  /* slate-800 */
+  color: #e2e8f0 !important;
+  /* slate-200 */
+}
+
+.dark .mat-mdc-chip.mat-primary {
+  background-color: rgba(59, 130, 246, 0.25) !important;
+  /* blue */
+  color: #93c5fd !important;
+}
+
+.dark .mat-mdc-chip.mat-accent {
+  background-color: rgba(16, 185, 129, 0.25) !important;
+  color: #6ee7b7 !important;
+}
+
+.dark .mat-mdc-chip.mat-warn {
+  background-color: rgba(244, 63, 94, 0.25) !important;
+  color: #fda4af !important;
+}
+
+.dark .mat-mdc-paginator {
+  background-color: #0f172a !important;
+  /* slate-900 */
+  color: #cbd5e1 !important;
+}
+
+.dark .mat-mdc-icon-button {
+  color: #cbd5e1 !important;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #dcdde1;
+  font-size: 14px;
+  background: #fff;
+
+  &:focus {
+    outline: none;
+    border-color: #1e90ff;
+    box-shadow: 0 0 0 2px rgba(30, 144, 255, 0.15);
+  }
+}
+
+.dark,
+button {
+  border: none;
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid transparent;
 }

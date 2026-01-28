@@ -1,0 +1,123 @@
+<div class="min-h-screen flex items-center justify-center
+            bg-slate-100 dark:bg-slate-950 px-4 py-10">
+
+  <div class="w-full max-w-xl">
+
+    <div class="card p-8 space-y-6">
+
+      <!-- HEADER -->
+      <div class="space-y-1">
+        <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-100">
+          Criar Usuário
+        </h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400">
+          Cadastre um novo usuário no sistema
+        </p>
+      </div>
+
+      <form (ngSubmit)="submit()" #form="ngForm" class="space-y-5">
+
+        <!-- NOME -->
+        <div>
+          <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            Nome
+          </label>
+          <input
+            type="text"
+            name="name"
+            [(ngModel)]="user.name"
+            required
+            class="w-full rounded-xl border px-4 py-3 text-sm transition
+                   bg-white dark:bg-slate-800
+                   text-slate-700 dark:text-slate-200
+                   border-slate-200 dark:border-slate-600
+                   focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500"
+          />
+        </div>
+
+        <!-- EMAIL -->
+        <div>
+          <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            Email
+          </label>
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="user.email"
+            required
+            class="w-full rounded-xl border px-4 py-3 text-sm transition
+                   bg-white dark:bg-slate-800
+                   text-slate-700 dark:text-slate-200
+                   border-slate-200 dark:border-slate-600
+                   focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500"
+          />
+        </div>
+
+        <!-- SENHA -->
+        <div>
+          <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            Senha
+          </label>
+          <input
+            type="password"
+            name="password"
+            [(ngModel)]="user.password"
+            required
+            minlength="6"
+            class="w-full rounded-xl border px-4 py-3 text-sm transition
+                   bg-white dark:bg-slate-800
+                   text-slate-700 dark:text-slate-200
+                   border-slate-200 dark:border-slate-600
+                   focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500"
+          />
+          <p class="text-xs text-slate-400 dark:text-slate-500 mt-1">
+            Mínimo de 6 caracteres
+          </p>
+        </div>
+
+        <!-- PERFIL -->
+        <div>
+          <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            Perfil
+          </label>
+          <select
+            name="role"
+            [(ngModel)]="user.role"
+            class="w-full rounded-xl border px-4 py-3 text-sm transition
+                   bg-white dark:bg-slate-800
+                   text-slate-700 dark:text-slate-200
+                   border-slate-200 dark:border-slate-600
+                   focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500">
+            <option value="Admin">Admin</option>
+            <option value="Operator">Operador</option>
+          </select>
+        </div>
+
+        <!-- ATIVO -->
+        <div class="flex items-center gap-3 pt-2">
+          <input
+            type="checkbox"
+            name="isActive"
+            [(ngModel)]="user.isActive"
+            class="w-5 h-5 rounded border-slate-300 text-blue-600
+                   focus:ring-blue-500/30 dark:bg-slate-800 dark:border-slate-600">
+          <label class="text-sm font-medium text-slate-700 dark:text-slate-300">
+            Usuário ativo
+          </label>
+        </div>
+
+        <!-- BOTÃO -->
+        <button
+          type="submit"
+          [disabled]="form.invalid"
+          class="w-full bg-blue-600 hover:bg-blue-700
+                 text-white py-3 rounded-xl font-semibold
+                 shadow-sm transition disabled:opacity-50">
+          Criar Usuário
+        </button>
+
+      </form>
+    </div>
+
+  </div>
+</div>

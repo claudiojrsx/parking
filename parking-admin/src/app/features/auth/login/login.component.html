@@ -1,29 +1,73 @@
-<div class="login-wrapper">
-  <div class="login-card">
-    <h1>Parking Admin</h1>
-    <p>Gerenciamento inteligente de vagas</p>
+<div class="min-h-screen flex items-center justify-center
+            bg-slate-100 dark:bg-slate-950 px-4">
 
-    <div class="form-group">
-      <label>E-mail</label>
-      <input type="email" [(ngModel)]="email" />
+  <div class="w-full max-w-md">
+
+    <!-- CARD -->
+    <div class="card p-8 space-y-6">
+
+      <!-- HEADER -->
+      <div class="text-center space-y-2">
+        <h1 class="text-2xl font-bold text-slate-800 dark:text-slate-100">
+          Parking Admin
+        </h1>
+        <p class="text-sm text-slate-500 dark:text-slate-400">
+          Gerenciamento inteligente de vagas
+        </p>
+      </div>
+
+      <!-- FORM -->
+      <div class="space-y-4">
+
+        <!-- EMAIL -->
+        <div>
+          <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            E-mail
+          </label>
+          <input type="email" [(ngModel)]="email" placeholder="voce@email.com" class="w-full rounded-xl border px-4 py-3 text-sm transition
+                   bg-white dark:bg-slate-800
+                   text-slate-700 dark:text-slate-200
+                   border-slate-200 dark:border-slate-600
+                   placeholder-slate-400 dark:placeholder-slate-500
+                   focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500" />
+        </div>
+
+        <!-- SENHA -->
+        <div>
+          <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            Senha
+          </label>
+          <input type="password" [(ngModel)]="password" placeholder="••••••••" class="w-full rounded-xl border px-4 py-3 text-sm transition
+                   bg-white dark:bg-slate-800
+                   text-slate-700 dark:text-slate-200
+                   border-slate-200 dark:border-slate-600
+                   placeholder-slate-400 dark:placeholder-slate-500
+                   focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500" />
+        </div>
+
+        <!-- ERRO -->
+        <div *ngIf="error" class="text-sm font-medium px-4 py-3 rounded-xl
+                    bg-rose-50 dark:bg-rose-900/30
+                    border border-rose-200 dark:border-rose-800
+                    text-rose-700 dark:text-rose-300">
+          ❌ {{ error }}
+        </div>
+
+        <!-- BOTÃO -->
+        <button (click)="login()" [disabled]="loading" class="w-full bg-blue-600 hover:bg-blue-700
+                 text-white py-3 rounded-xl font-semibold
+                 shadow-sm transition disabled:opacity-50">
+          {{ loading ? 'Entrando...' : 'Entrar' }}
+        </button>
+
+      </div>
+
     </div>
 
-    <div class="form-group">
-      <label>Senha</label>
-      <input type="password" [(ngModel)]="password" />
-    </div>
+    <!-- FOOTER -->
+    <p class="text-center text-xs text-slate-400 dark:text-slate-500 mt-6">
+      © 2026 Parking Admin
+    </p>
 
-    <div class="error" *ngIf="error">
-      {{ error }}
-    </div>
-
-    <div class="login-footer">
-      <button
-        class="btn-primary"
-        (click)="login()"
-        [disabled]="loading">
-        {{ loading ? 'Entrando...' : 'Entrar' }}
-      </button>
-    </div>
   </div>
 </div>

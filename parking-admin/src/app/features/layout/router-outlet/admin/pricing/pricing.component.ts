@@ -14,8 +14,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-import { PricingService } from '../../../core/services/pricing.service';
-import { Pricing, VehicleType } from '../../../core/models/pricing.model';
+import { PricingService } from '../../../../../core/services/pricing.service';
+import { Pricing, VehicleType } from '../../../../../core/models/pricing.model';
 
 @Component({
   standalone: true,

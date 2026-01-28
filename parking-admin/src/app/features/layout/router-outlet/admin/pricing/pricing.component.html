@@ -1,6 +1,5 @@
 <div class="max-w-4xl mx-auto">
-  <div class="rounded-2xl border border-slate-200 bg-white shadow-lg p-8
-           dark:border-slate-700 dark:bg-slate-900">
+  <div class="card card-hover mb-6 p-8">
 
     <!-- HEADER -->
     <div class="mb-8">
@@ -65,10 +64,11 @@
 
       <!-- ACTIONS -->
       <div class="md:col-span-3 flex justify-end mt-6">
-        <button type="submit" [disabled]="form.invalid || loading" class="flex items-center gap-2 px-8 py-3 rounded-xl
-                 bg-indigo-600 text-white font-semibold
-                 hover:bg-indigo-700 disabled:opacity-50 transition">
-          💾 Salvar preços
+        <button type="submit" [disabled]="form.invalid || loading"
+        class="flex items-center gap-2 px-8 py-3 rounded-xl
+                 bg-blue-600 text-white font-semibold shadow-md
+                 hover:bg-blue-700 disabled:opacity-50 transition">
+          Salvar preços
         </button>
       </div>
     </form>

@@ -1,7 +1,12 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Parking\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Dev\\parking\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{27B7223E-C631-210D-C769-014EBF0074BD}|Parking.Api\\Parking.Api.csproj|c:\\dev\\parking\\parking.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27B7223E-C631-210D-C769-014EBF0074BD}|Parking.Api\\Parking.Api.csproj|solutionrelative:parking.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,8 +14,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 18,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{809f6ff3-8092-454a-8003-6d4091f9b5bb}"
@@ -78,6 +87,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:11:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Dev\\parking\\Parking.Api\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Parking.Api\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Dev\\parking\\Parking.Api\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Parking.Api\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T01:22:07.301Z",
+              "EditorCaption": ""
             }
           ]
         }

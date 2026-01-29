@@ -1,14 +1,55 @@
-<nav class="admin-menu">
-  <a routerLink="pricing" routerLinkActive="active">
-    💰 Pricing
+<nav
+  class="
+    flex flex-col gap-2
+    shadow-sm
+    min-w-[220px]
+    p-4
+    rounded-lg
+    bg-white dark:bg-slate-800
+    border border-slate-200 dark:border-slate-700
+  "
+>
+  <a
+    routerLink="pricing"
+    routerLinkActive="active"
+    class="
+      flex items-center gap-2
+      px-3 py-2
+      rounded-md
+      text-slate-700 dark:text-slate-200
+      hover:bg-slate-100 dark:hover:bg-slate-700
+      transition-colors
+    "
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <span>💰</span>
+    <span>Pricing</span>
   </a>
 
-  <a routerLink="users/create" routerLinkActive="active">
-    👤 Usuários
+  <a
+    routerLink="users/create"
+    routerLinkActive="active"
+    class="
+      flex items-center gap-2
+      px-3 py-2
+      rounded-md
+      text-slate-700 dark:text-slate-200
+      hover:bg-slate-100 dark:hover:bg-slate-700
+      transition-colors
+    "
+  >
+    <span>👤</span>
+    <span>Usuários</span>
   </a>
 
   <!-- Futuro -->
   <!--
-  <a routerLink="settings">⚙️ Configurações</a>
+  <a
+    routerLink="settings"
+    routerLinkActive="active"
+    class="..."
+  >
+    ⚙️ Configurações
+  </a>
   -->
 </nav>

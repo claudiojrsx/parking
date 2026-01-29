@@ -10,6 +10,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatIcon } from '@angular/material/icon';
 
 import { ParkingService } from '../../core/services/parking.service';
 
@@ -23,6 +24,7 @@ import { ParkingService } from '../../core/services/parking.service';
     MatPaginatorModule,
     MatSortModule,
     MatButtonModule,
+    MatIcon
   ],
   templateUrl: './parking-check-out.component.html',
   styleUrls: ['./parking-check-out.component.scss'],
@@ -38,6 +40,7 @@ export class ParkingCheckOutComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatIcon) icon!: MatIcon;
 
   constructor(private parkingService: ParkingService) {}
 
@@ -73,5 +76,31 @@ export class ParkingCheckOutComponent {
       },
       complete: () => (this.loading = false),
     });
+  }
+
+  generateReceipt() {
+    if (!this.result) {
+      return;
+    }
+
+    const receipt = `
+    RECIBO - PARKING SYSTEM
+
+    Placa: ${this.result.plate}
+    Tipo: ${this.result.vehicleType}
+
+    Entrada: ${new Date(this.result.checkInAt).toLocaleString()}
+    Saída: ${new Date().toLocaleString()}
+
+    Duração: ${this.result.duration}
+    Valor pago: R$ ${this.result.amount.toFixed(2)}
+
+    Obrigado por utilizar nosso estacionamento 🚗
+    `;
+
+    const win = window.open('', '_blank');
+    win?.document.write(`<pre>${receipt}</pre>`);
+    win?.document.close();
+    win?.print();
   }
 }

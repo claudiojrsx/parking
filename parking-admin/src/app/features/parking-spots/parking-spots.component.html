@@ -83,37 +83,44 @@
     <!-- Tipo -->
     <ng-container matColumnDef="type">
       <th mat-header-cell *matHeaderCellDef class="px-6 py-4 text-xs font-semibold uppercase tracking-wide
-                 bg-slate-50 dark:bg-slate-800
-                 text-slate-600 dark:text-slate-400">
+           bg-slate-50 dark:bg-slate-800
+           text-slate-600 dark:text-slate-400">
         Tipo
       </th>
 
       <td mat-cell *matCellDef="let spot" class="px-6 py-4">
-        <mat-chip class="text-xs font-medium" color="primary" selected>
+        <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium" [ngClass]="{
+                    'bg-indigo-100 text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-400': spot.type === 'Car',
+                    'bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-400': spot.type === 'Motorcycle',
+                    'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-400': spot.type === 'Truck'
+                  }">
           {{ spot.type }}
-        </mat-chip>
+        </span>
+
       </td>
 
-      <td mat-footer-cell *matFooterCellDef class="bg-slate-50 dark:bg-slate-800"></td>
+      <td mat-footer-cell *matFooterCellDef class="bg-slate-50 dark:bg-slate-800">
+      </td>
     </ng-container>
 
     <!-- Status -->
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef class="px-6 py-4 text-xs font-semibold uppercase tracking-wide
-                 bg-slate-50 dark:bg-slate-800
-                 text-slate-600 dark:text-slate-400">
+           bg-slate-50 dark:bg-slate-800
+           text-slate-600 dark:text-slate-400">
         Status
       </th>
 
       <td mat-cell *matCellDef="let spot" class="px-6 py-4">
-        <span class="px-3 py-1 rounded-full text-xs font-semibold" [ngClass]="spot.isOccupied
-            ? 'bg-rose-100 text-rose-700 dark:bg-rose-500/20 dark:text-rose-400'
-            : 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-400'">
+        <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium" [ngClass]="spot.isOccupied
+        ? 'bg-rose-100 text-rose-700 dark:bg-rose-500/20 dark:text-rose-400'
+        : 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-400'">
           {{ spot.isOccupied ? 'Ocupada' : 'Livre' }}
         </span>
       </td>
 
-      <td mat-footer-cell *matFooterCellDef class="bg-slate-50 dark:bg-slate-800"></td>
+      <td mat-footer-cell *matFooterCellDef class="bg-slate-50 dark:bg-slate-800">
+      </td>
     </ng-container>
 
     <!-- Header -->

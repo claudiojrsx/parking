@@ -6,18 +6,21 @@ public class User
     public string Name { get; private set; } = null!;
     public string Email { get; private set; } = null!;
     public string PasswordHash { get; private set; } = null!;
-
     public Guid RoleId { get; private set; }
+    public bool IsActive { get; private set; }
     public Role Role { get; private set; } = null!;
-
     protected User() { } // EF
 
-    public User(string name, string email, string passwordHash, Guid roleId)
+    public User(string name, string email, string passwordHash, Guid roleId, bool isActive)
     {
         Id = Guid.NewGuid();
         Name = name;
         Email = email;
         PasswordHash = passwordHash;
         RoleId = roleId;
+        IsActive = isActive;
     }
+
+    public void Deactivate() => IsActive = false;
+    public void Activate() => IsActive = true;
 }

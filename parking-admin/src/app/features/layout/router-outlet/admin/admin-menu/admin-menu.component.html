@@ -1,5 +1,4 @@
-<nav
-  class="
+<nav class="
     flex flex-col gap-2
     shadow-sm
     min-w-[220px]
@@ -7,49 +6,52 @@
     rounded-lg
     bg-white dark:bg-slate-800
     border border-slate-200 dark:border-slate-700
-  "
->
-  <a
-    routerLink="pricing"
-    routerLinkActive="active"
-    class="
+  ">
+  <a routerLink="users/create" routerLinkActive="active" class="
       flex items-center gap-2
       px-3 py-2
       rounded-md
       text-slate-700 dark:text-slate-200
       hover:bg-slate-100 dark:hover:bg-slate-700
       transition-colors
-    "
-    [routerLinkActiveOptions]="{ exact: true }"
-  >
-    <span>💰</span>
-    <span>Pricing</span>
-  </a>
-
-  <a
-    routerLink="users/create"
-    routerLinkActive="active"
-    class="
-      flex items-center gap-2
-      px-3 py-2
-      rounded-md
-      text-slate-700 dark:text-slate-200
-      hover:bg-slate-100 dark:hover:bg-slate-700
-      transition-colors
-    "
-  >
+    ">
     <span>👤</span>
     <span>Usuários</span>
   </a>
 
-  <!-- Futuro -->
-  <!--
-  <a
-    routerLink="settings"
-    routerLinkActive="active"
-    class="..."
-  >
-    ⚙️ Configurações
+  <a routerLink="users" routerLinkActive="active" class="
+      flex items-center gap-2
+      px-3 py-2
+      rounded-md
+      text-slate-700 dark:text-slate-200
+      hover:bg-slate-100 dark:hover:bg-slate-700
+      transition-colors
+    ">
+    <span>👥</span>
+    <span>Lista de Usuários</span>
   </a>
-  -->
+
+  <a routerLink="roles/create" routerLinkActive="active" class="
+      flex items-center gap-2
+      px-3 py-2
+      rounded-md
+      text-slate-700 dark:text-slate-200
+      hover:bg-slate-100 dark:hover:bg-slate-700
+      transition-colors
+    ">
+    <span>🛡️</span>
+    <span>Roles</span>
+  </a>
+
+  <a routerLink="pricing" routerLinkActive="active" class="
+      flex items-center gap-2
+      px-3 py-2
+      rounded-md
+      text-slate-700 dark:text-slate-200
+      hover:bg-slate-100 dark:hover:bg-slate-700
+      transition-colors
+    " [routerLinkActiveOptions]="{ exact: true }">
+    <span>💰</span>
+    <span>Pricing</span>
+  </a>
 </nav>

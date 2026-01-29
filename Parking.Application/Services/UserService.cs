@@ -7,7 +7,7 @@ namespace Parking.Application.Services
     {
         private readonly IUserRepository _userRepo = userRepo;
 
-        public async Task<Guid> CreateUserAsync(string name, string email, string password, Guid roleId)
+        public async Task<Guid> CreateUserAsync(string name, string email, string password, Guid roleId, bool isActive)
         {
             var exists = await _userRepo.GetByEmailAsync(email);
             if (exists != null)
@@ -15,10 +15,15 @@ namespace Parking.Application.Services
 
             var hash = BCrypt.Net.BCrypt.HashPassword(password);
 
-            var user = new User(name, email, hash, roleId);
+            var user = new User(name, email, hash, roleId, isActive);
             await _userRepo.AddAsync(user);
 
             return user.Id;
+        }
+
+        public async Task<IEnumerable<User>> GetAllAsync()
+        {
+            return await _userRepo.GetAllAsync();
         }
     }
 }

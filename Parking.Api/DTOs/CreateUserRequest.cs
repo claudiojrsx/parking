@@ -4,6 +4,7 @@
         string Name,
         string Email,
         string Password,
-        Guid RoleId
+        Guid RoleId,
+        bool IsActive
     );
 }

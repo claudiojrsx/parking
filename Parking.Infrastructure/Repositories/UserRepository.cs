@@ -32,9 +32,13 @@ public class UserRepository : IUserRepository
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<User>> GetAllAsync()
+    public async Task<IEnumerable<User>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        return await _context.Users
+            .Include(u => u.Role)
+            .AsNoTracking()
+            .OrderBy(u => u.Name)
+            .ToListAsync();
     }
 
     public Task UpdateAsync(User entity)

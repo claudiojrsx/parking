@@ -15,6 +15,7 @@ namespace Parking.Infrastructure.Mappings
             builder.Property(x => x.Name).IsRequired().HasMaxLength(100);
             builder.Property(x => x.Email).IsRequired().HasMaxLength(150);
             builder.Property(x => x.PasswordHash).IsRequired();
+            builder.Property(u => u.IsActive).IsRequired().HasDefaultValue(true);
 
             builder.HasOne(x => x.Role)
                    .WithMany()

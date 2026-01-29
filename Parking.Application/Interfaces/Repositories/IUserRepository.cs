@@ -5,6 +5,6 @@ namespace Parking.Application.Interfaces.Repositories
     public interface IUserRepository : IRepository<User>
     {
         Task<User?> GetByEmailAsync(string email);
-        Task AddAsync(User user);
+        new Task AddAsync(User user);
     }
 }

@@ -187,3 +187,14 @@ button {
   cursor: pointer;
   border: 1px solid transparent;
 }
+
+.snackbar-success {
+  --mdc-snackbar-container-color: #16a34a; /* verde */
+  --mdc-snackbar-supporting-text-color: #fff;
+}
+
+.snackbar-error {
+  --mdc-snackbar-container-color: #dc2626; /* vermelho */
+  --mdc-snackbar-supporting-text-color: #fff;
+}
+

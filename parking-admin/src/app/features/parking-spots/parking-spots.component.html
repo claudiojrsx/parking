@@ -51,66 +51,80 @@
 
   <table mat-table [dataSource]="dataSource" matSort class="w-full">
 
+    <!-- Código -->
     <ng-container matColumnDef="code">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-xs font-semibold uppercase
-           bg-slate-50 dark:bg-slate-800
-           text-slate-600 dark:text-slate-400">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="px-6 py-4 text-xs font-semibold uppercase tracking-wide
+                 bg-slate-50 dark:bg-slate-800
+                 text-slate-600 dark:text-slate-400">
         Código
       </th>
 
-      <td mat-cell *matCellDef="let spot" class="text-sm text-slate-700 dark:text-slate-200">
+      <td mat-cell *matCellDef="let spot" class="px-6 py-4 text-sm font-medium text-slate-700 dark:text-slate-200">
         {{ spot.code }}
       </td>
 
-      <td mat-footer-cell *matFooterCellDef colspan="1" class="text-sm font-medium
-           text-slate-600 dark:text-slate-400
-           bg-slate-50 dark:bg-slate-800">
+      <td mat-footer-cell *matFooterCellDef class="px-6 py-4 text-sm font-medium
+                 bg-slate-50 dark:bg-slate-800
+                 text-slate-600 dark:text-slate-400">
         Total: <strong>{{ summary?.total }}</strong>
         &nbsp;•&nbsp;
-        Livres: <strong class="text-emerald-600 dark:text-emerald-400">{{ summary?.free }}</strong>
+        Livres:
+        <strong class="text-emerald-600 dark:text-emerald-400">
+          {{ summary?.free }}
+        </strong>
         &nbsp;•&nbsp;
-        Ocupadas: <strong class="text-rose-600 dark:text-rose-400">{{ summary?.occupied }}</strong>
+        Ocupadas:
+        <strong class="text-rose-600 dark:text-rose-400">
+          {{ summary?.occupied }}
+        </strong>
       </td>
     </ng-container>
 
+    <!-- Tipo -->
     <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef class="text-xs font-semibold text-slate-600 uppercase">
+      <th mat-header-cell *matHeaderCellDef class="px-6 py-4 text-xs font-semibold uppercase tracking-wide
+                 bg-slate-50 dark:bg-slate-800
+                 text-slate-600 dark:text-slate-400">
         Tipo
       </th>
 
-      <td mat-cell *matCellDef="let spot">
-        <mat-chip color="primary">
+      <td mat-cell *matCellDef="let spot" class="px-6 py-4">
+        <mat-chip class="text-xs font-medium" color="primary" selected>
           {{ spot.type }}
         </mat-chip>
       </td>
 
-      <td mat-footer-cell *matFooterCellDef></td>
+      <td mat-footer-cell *matFooterCellDef class="bg-slate-50 dark:bg-slate-800"></td>
     </ng-container>
 
     <!-- Status -->
     <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef class="text-xs font-semibold text-slate-600 uppercase">
+      <th mat-header-cell *matHeaderCellDef class="px-6 py-4 text-xs font-semibold uppercase tracking-wide
+                 bg-slate-50 dark:bg-slate-800
+                 text-slate-600 dark:text-slate-400">
         Status
       </th>
 
-      <td mat-cell *matCellDef="let spot">
-        <mat-chip [color]="spot.isOccupied ? 'warn' : 'accent'">
+      <td mat-cell *matCellDef="let spot" class="px-6 py-4">
+        <span class="px-3 py-1 rounded-full text-xs font-semibold" [ngClass]="spot.isOccupied
+            ? 'bg-rose-100 text-rose-700 dark:bg-rose-500/20 dark:text-rose-400'
+            : 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-400'">
           {{ spot.isOccupied ? 'Ocupada' : 'Livre' }}
-        </mat-chip>
+        </span>
       </td>
 
-      <td mat-footer-cell *matFooterCellDef></td>
+      <td mat-footer-cell *matFooterCellDef class="bg-slate-50 dark:bg-slate-800"></td>
     </ng-container>
 
-    <!-- HEADER -->
+    <!-- Header -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 
-    <!-- ROWS -->
+    <!-- Rows -->
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-      class="hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+      class="transition hover:bg-slate-50 dark:hover:bg-slate-800">
     </tr>
 
-    <!-- FOOTER -->
+    <!-- Footer -->
     <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
 
   </table>

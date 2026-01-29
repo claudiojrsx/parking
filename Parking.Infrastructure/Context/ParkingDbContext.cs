@@ -31,10 +31,9 @@ public class ParkingDbContext : DbContext
         modelBuilder.ApplyConfiguration(new RoleMap());
 
         modelBuilder.Entity<Role>().HasData(
-            new Role("Admin")
-            {
-                Id = AuthSeed.AdminRoleId
-            }
+            new Role("Admin") { Id = AuthSeed.AdminRoleId },
+            new Role("Operator") { Id = AuthSeed.OperatorRoleId },
+            new Role("Attendant") { Id = AuthSeed.AttendantRoleId }
         );
 
         modelBuilder.Entity<User>().HasData(
@@ -42,7 +41,8 @@ public class ParkingDbContext : DbContext
                 "System Admin",
                 "admin@parking.com",
                 AuthSeed.AdminPasswordHash,
-                AuthSeed.AdminRoleId
+                AuthSeed.AdminRoleId,
+                true
             )
             {
                 Id = AuthSeed.AdminUserId

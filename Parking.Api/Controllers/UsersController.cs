@@ -20,9 +20,27 @@ namespace Parking.Api.Controllers
                 request.Name,
                 request.Email,
                 request.Password,
-                request.RoleId);
+                request.RoleId,
+                request.IsActive);
 
             return CreatedAtAction(nameof(Create), new { userId });
+        }
+
+        [HttpGet]
+        [Authorize(Roles = Roles.Admin)]
+        public async Task<ActionResult<IEnumerable<UserResponse>>> GetAll()
+        {
+            var users = await _userService.GetAllAsync();
+
+            var response = users.Select(u => new UserResponse(
+                u.Id,
+                u.Name,
+                u.Email,
+                u.Role.Name,
+                u.IsActive
+            ));
+
+            return Ok(response);
         }
     }
 }

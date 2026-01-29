@@ -22,7 +22,6 @@ export const routes: Routes = [
         pathMatch: 'full',
         redirectTo: 'dashboard',
       },
-
       {
         path: 'dashboard',
         data: { breadcrumb: 'Dashboard' },
@@ -31,7 +30,6 @@ export const routes: Routes = [
             (m) => m.DashboardComponent,
           ),
       },
-
       {
         path: 'admin',
         data: { role: 'Admin', breadcrumb: 'Admin' },
@@ -61,10 +59,24 @@ export const routes: Routes = [
                 (m) => m.CreateUserComponent,
               ),
           },
+          {
+            path: 'users',
+            data: { breadcrumb: 'Lista de Usuários' },
+            loadComponent: () =>
+              import('./features/layout/router-outlet/admin/users/list-users/list-users.component').then(
+                (m) => m.ListUsersComponent,
+              ),
+          },
+          {
+            path: 'roles/create',
+            data: { breadcrumb: 'Criar Role' },
+            loadComponent: () =>
+              import('./features/layout/router-outlet/admin/roles/create/create-role/create-role.component').then(
+                (m) => m.CreateRoleComponent,
+              ),
+          },
         ],
       },
-
-      // 🔹 PARKING (rota pai)
       {
         path: 'parking',
         data: { breadcrumb: 'Parking' },
@@ -87,7 +99,6 @@ export const routes: Routes = [
           },
         ],
       },
-
       {
         path: 'parking-spots',
         data: { breadcrumb: 'Vagas de Estacionamento' },

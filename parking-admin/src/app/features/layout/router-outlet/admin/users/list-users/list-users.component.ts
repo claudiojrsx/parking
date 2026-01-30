@@ -9,6 +9,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
 
 import { UsersService } from '../../../../../../core/services/users.service';
 
@@ -22,6 +23,7 @@ import { UsersService } from '../../../../../../core/services/users.service';
     MatSortModule,
     MatIconModule,
     MatButtonModule,
+    RouterModule
   ],
   templateUrl: './list-users.component.html',
   styleUrls: ['./list-users.component.scss']

@@ -1,0 +1,43 @@
+<div class="max-w-4xl mx-auto float-start">
+
+  <div class="card card-hover space-y-6 mb-6 p-8">
+    <div>
+      <h2 class="text-xl font-semibold text-slate-800 dark:text-slate-100">
+        Editar usuário
+      </h2>
+      <p class="text-sm text-slate-500 dark:text-slate-400">
+        Atualize as informações do usuário
+      </p>
+    </div>
+
+    <!-- Nome -->
+    <div>
+      <label class="label">Nome</label>
+      <input type="text" [(ngModel)]="user.name" class="input" />
+    </div>
+
+    <!-- Email (readonly) -->
+    <div>
+      <label class="label">Email</label>
+      <input type="email" [(ngModel)]="user.email" disabled class="input opacity-60 cursor-not-allowed" />
+    </div>
+
+    <!-- Status -->
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-medium">Usuário ativo</span>
+      <mat-slide-toggle [(ngModel)]="user.isActive"></mat-slide-toggle>
+    </div>
+
+    <!-- Ações -->
+    <div class="flex justify-end gap-3 pt-4">
+      <button class="btn-secondary" (click)="router.navigate(['/admin/users'])">
+        Cancelar
+      </button>
+
+      <button class="btn-primary" [disabled]="loading" (click)="save()">
+        Salvar
+      </button>
+    </div>
+
+  </div>
+</div>

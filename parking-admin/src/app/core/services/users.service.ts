@@ -16,4 +16,12 @@ export class UsersService {
   create(request: CreateUserRequest): Observable<void> {
     return this.http.post<void>(this.apiUrl, request);
   }
+
+  getById(id: string) {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+
+  update(id: string, data: any) {
+    return this.http.put(`${this.apiUrl}/${id}`, data);
+  }
 }

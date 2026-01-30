@@ -75,6 +75,14 @@ export const routes: Routes = [
                 (m) => m.CreateRoleComponent,
               ),
           },
+          {
+            path: 'users/edit/:id',
+            data: { breadcrumb: 'Editar Usuário' },
+            loadComponent: () =>
+              import('./features/layout/router-outlet/admin/users/edit-user/edit-user.component').then(
+                (m) => m.EditUserComponent,
+              ),
+          },
         ],
       },
       {

@@ -1,4 +1,4 @@
-<div class="mx-auto">
+<div class="mx-auto float-start">
   <div class="card card-hover space-y-6 mb-6 p-8">
 
     <div class="space-y-1">
@@ -46,7 +46,8 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>Ações</th>
         <td mat-cell *matCellDef="let user">
-          <button mat-icon-button color="primary">
+          <button mat-icon-button color="primary" [routerLink]="['/admin/users/edit', user.id]"
+            matTooltip="Editar usuário">
             <mat-icon>edit</mat-icon>
           </button>
         </td>

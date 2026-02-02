@@ -1,10 +1,16 @@
-﻿using Parking.Application.DTOs;
+﻿using Microsoft.EntityFrameworkCore;
+using Parking.Application.DTOs;
 using Parking.Application.Interfaces.Repositories;
 using Parking.Domain.Entities;
 using Parking.Domain.Enums;
 using Parking.Domain.ValueObjects;
 
 namespace Parking.Application.Services;
+
+public class BusinessException : Exception
+{
+    public BusinessException(string message) : base(message) { }
+}
 
 public class ParkingService(
     IVehicleRepository vehicleRepo,
@@ -19,21 +25,40 @@ public class ParkingService(
 
     public async Task<Guid> CheckInAsync(string plate, VehicleType type)
     {
-        var licensePlate = new LicensePlate(plate);
+        if (string.IsNullOrWhiteSpace(plate))
+            throw new BusinessException("Placa inválida.");
 
+        var plateNormalized = plate.Trim().ToUpper();
+        var licensePlate = new LicensePlate(plateNormalized);
+
+        // Buscando o veículo pela placa
         var vehicle = await _vehicleRepo.GetByLicensePlateAsync(licensePlate);
 
-        if (vehicle is null)
+        if (vehicle is not null)
         {
+            // Verifica se já existe sessão ativa para esse veículo
+            var activeSession = await _sessionRepo.GetActiveByVehicleIdAsync(vehicle.Id);
+            if (activeSession is not null)
+            {
+                throw new BusinessException(
+                    "Esta placa já possui um check-in ativo para um tipo de veículo."
+                );
+            }
+        }
+        else
+        {
+            // Cria o veículo se não existir
             vehicle = new Vehicle(licensePlate, type);
             await _vehicleRepo.AddAsync(vehicle);
         }
 
+        // Busca vaga disponível
         var spot = await _spotRepo.GetAvailableAsync((ParkingSpotType)type)
-            ?? throw new InvalidOperationException("No available spot");
+            ?? throw new InvalidOperationException("Não há vagas disponíveis para este tipo de veículo.");
 
         spot.Occupy();
 
+        // Cria sessão
         var session = new ParkingSession(vehicle.Id, spot.Id);
 
         await _spotRepo.UpdateAsync(spot);

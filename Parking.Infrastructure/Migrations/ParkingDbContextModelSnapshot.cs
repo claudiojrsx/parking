@@ -44,7 +44,7 @@ namespace Parking.Infrastructure.Migrations
 
                     b.HasIndex("VehicleId", "ExitTime");
 
-                    b.ToTable("ParkingSessions");
+                    b.ToTable("ParkingSessions", (string)null);
                 });
 
             modelBuilder.Entity("Parking.Domain.Entities.ParkingSpot", b =>
@@ -69,7 +69,40 @@ namespace Parking.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ParkingSpots");
+                    b.ToTable("ParkingSpots", (string)null);
+                });
+
+            modelBuilder.Entity("Parking.Domain.Entities.Pricing", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("CarHourlyRate")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("MotorcycleHourlyRate")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
+
+                    b.Property<decimal>("TruckHourlyRate")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsActive")
+                        .IsUnique()
+                        .HasFilter("[IsActive] = 1");
+
+                    b.ToTable("Pricings", (string)null);
                 });
 
             modelBuilder.Entity("Parking.Domain.Entities.Role", b =>
@@ -162,36 +195,7 @@ namespace Parking.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Vehicles");
-                });
-
-            modelBuilder.Entity("Parking.Infrastructure.Entities.PricingConfiguration", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<decimal>("CarHourlyRate")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("decimal(10,2)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<decimal>("MotorcycleHourlyRate")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("decimal(10,2)");
-
-                    b.Property<decimal>("TruckHourlyRate")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("decimal(10,2)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PricingConfigurations");
+                    b.ToTable("Vehicles", (string)null);
                 });
 
             modelBuilder.Entity("Parking.Domain.Entities.User", b =>
@@ -219,6 +223,9 @@ namespace Parking.Infrastructure.Migrations
                                 .HasColumnName("LicensePlate");
 
                             b1.HasKey("VehicleId");
+
+                            b1.HasIndex("Value")
+                                .IsUnique();
 
                             b1.ToTable("Vehicles");
 

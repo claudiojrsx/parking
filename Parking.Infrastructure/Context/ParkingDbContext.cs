@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Parking.Domain.Entities;
-using Parking.Infrastructure.Entities;
-using Parking.Infrastructure.Mappings;
 using Parking.Infrastructure.Seeds;
 
 namespace Parking.Infrastructure.Context;
@@ -16,26 +14,23 @@ public class ParkingDbContext : DbContext
     public DbSet<Vehicle> Vehicles => Set<Vehicle>();
     public DbSet<ParkingSpot> ParkingSpots => Set<ParkingSpot>();
     public DbSet<ParkingSession> ParkingSessions => Set<ParkingSession>();
-    public DbSet<PricingConfiguration> PricingConfigurations => Set<PricingConfiguration>();
+    public DbSet<Pricing> Pricings => Set<Pricing>();
     public DbSet<User> Users => Set<User>();
     public DbSet<Role> Roles => Set<Role>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Mapeamentos separados (boa prática)
-        modelBuilder.ApplyConfiguration(new VehicleMap());
-        modelBuilder.ApplyConfiguration(new ParkingSpotMap());
-        modelBuilder.ApplyConfiguration(new ParkingSessionMap());
+        // Aplica TODAS as IEntityTypeConfiguration automaticamente
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ParkingDbContext).Assembly);
 
-        modelBuilder.ApplyConfiguration(new UserMap());
-        modelBuilder.ApplyConfiguration(new RoleMap());
-
+        // Seeds de Roles
         modelBuilder.Entity<Role>().HasData(
             new Role("Admin") { Id = AuthSeed.AdminRoleId },
             new Role("Operator") { Id = AuthSeed.OperatorRoleId },
             new Role("Attendant") { Id = AuthSeed.AttendantRoleId }
         );
 
+        // Seed do usuário admin
         modelBuilder.Entity<User>().HasData(
             new User(
                 "System Admin",
@@ -48,22 +43,6 @@ public class ParkingDbContext : DbContext
                 Id = AuthSeed.AdminUserId
             }
         );
-
-        modelBuilder.Entity<PricingConfiguration>(entity =>
-        {
-            entity.HasKey(x => x.Id);
-
-            entity.Property(x => x.CarHourlyRate)
-                  .HasPrecision(10, 2);
-
-            entity.Property(x => x.MotorcycleHourlyRate)
-                  .HasPrecision(10, 2);
-
-            entity.Property(x => x.TruckHourlyRate)
-                  .HasPrecision(10, 2);
-        });
-
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ParkingDbContext).Assembly);
 
         base.OnModelCreating(modelBuilder);
     }

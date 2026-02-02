@@ -1,43 +1,99 @@
 <div class="max-w-4xl mx-auto float-start">
 
   <div class="card card-hover space-y-6 mb-6 p-8">
-    <div>
+
+    <!-- HEADER -->
+    <div class="space-y-1">
       <h2 class="text-xl font-semibold text-slate-800 dark:text-slate-100">
-        Editar usuário
+        Editar Usuário
       </h2>
       <p class="text-sm text-slate-500 dark:text-slate-400">
         Atualize as informações do usuário
       </p>
     </div>
 
-    <!-- Nome -->
-    <div>
-      <label class="label">Nome</label>
-      <input type="text" [(ngModel)]="user.name" class="input" />
-    </div>
+    <form (ngSubmit)="save()" #form="ngForm" class="space-y-5">
 
-    <!-- Email (readonly) -->
-    <div>
-      <label class="label">Email</label>
-      <input type="email" [(ngModel)]="user.email" disabled class="input opacity-60 cursor-not-allowed" />
-    </div>
+      <!-- NOME -->
+      <div>
+        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+          Nome
+        </label>
+        <input
+          type="text"
+          name="name"
+          [(ngModel)]="user.name"
+          required
+          class="w-full rounded-xl border px-4 py-3 text-sm transition
+                 bg-white dark:bg-slate-800
+                 text-slate-700 dark:text-slate-200
+                 border-slate-200 dark:border-slate-600
+                 focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500"
+        />
+      </div>
 
-    <!-- Status -->
-    <div class="flex items-center justify-between">
-      <span class="text-sm font-medium">Usuário ativo</span>
-      <mat-slide-toggle [(ngModel)]="user.isActive"></mat-slide-toggle>
-    </div>
+      <!-- EMAIL (readonly) -->
+      <div>
+        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+          Email
+        </label>
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="user.email"
+          disabled
+          class="w-full rounded-xl border px-4 py-3 text-sm transition
+                 bg-slate-100 dark:bg-slate-700
+                 text-slate-500 dark:text-slate-400
+                 border-slate-200 dark:border-slate-600
+                 cursor-not-allowed"
+        />
+      </div>
 
-    <!-- Ações -->
-    <div class="flex justify-end gap-3 pt-4">
-      <button class="btn-secondary" (click)="router.navigate(['/admin/users'])">
-        Cancelar
-      </button>
+      <!-- ATIVO -->
+      <div class="flex items-center gap-3 pt-2">
+        <input
+          type="checkbox"
+          name="isActive"
+          [(ngModel)]="user.isActive"
+          class="w-5 h-5 rounded border-slate-300 text-blue-600
+                 focus:ring-blue-500/30
+                 dark:bg-slate-800 dark:border-slate-600"
+        />
+        <label class="text-sm font-medium text-slate-700 dark:text-slate-300">
+          Usuário ativo
+        </label>
+      </div>
 
-      <button class="btn-primary" [disabled]="loading" (click)="save()">
-        Salvar
-      </button>
-    </div>
+      <!-- AÇÕES -->
+      <div class="flex justify-end gap-3 pt-6">
+
+        <button
+          type="button"
+          (click)="router.navigate(['/admin/users'])"
+          class="px-6 py-3 rounded-xl font-semibold
+                 border border-slate-300 dark:border-slate-600
+                 text-slate-700 dark:text-slate-300
+                 hover:bg-slate-100 dark:hover:bg-slate-700
+                 transition"
+        >
+          Cancelar
+        </button>
+
+        <button
+          type="submit"
+          [disabled]="form.invalid || loading"
+          class="px-6 py-3 rounded-xl font-semibold
+                 bg-blue-600 hover:bg-blue-700
+                 text-white shadow-sm transition
+                 disabled:opacity-50"
+        >
+          Salvar alterações
+        </button>
+
+      </div>
+
+    </form>
 
   </div>
 </div>

@@ -335,10 +335,10 @@ C:\Dev\parking\Parking.Api\obj\Debug\net10.0\staticwebassets.build.json.cache
 C:\Dev\parking\Parking.Api\obj\Debug\net10.0\staticwebassets.development.json
 C:\Dev\parking\Parking.Api\obj\Debug\net10.0\staticwebassets.build.endpoints.json
 C:\Dev\parking\Parking.Api\obj\Debug\net10.0\swae.build.ex.cache
-C:\Dev\parking\Parking.Api\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 C:\Dev\parking\Parking.Api\obj\Debug\net10.0\Parking..A2BFD50F.Up2Date
 C:\Dev\parking\Parking.Api\obj\Debug\net10.0\Parking.Api.dll
 C:\Dev\parking\Parking.Api\obj\Debug\net10.0\refint\Parking.Api.dll
 C:\Dev\parking\Parking.Api\obj\Debug\net10.0\Parking.Api.pdb
 C:\Dev\parking\Parking.Api\obj\Debug\net10.0\Parking.Api.genruntimeconfig.cache
 C:\Dev\parking\Parking.Api\obj\Debug\net10.0\ref\Parking.Api.dll
+C:\Dev\parking\Parking.Api\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

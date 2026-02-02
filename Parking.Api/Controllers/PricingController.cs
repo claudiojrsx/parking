@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Parking.Api.Auth;
 using Parking.Api.DTOs;
 using Parking.Infrastructure.Context;
-using Parking.Infrastructure.Entities;
+using Parking.Domain.Entities;
 
 namespace Parking.Api.Controllers
 {
@@ -27,14 +27,14 @@ namespace Parking.Api.Controllers
             if (request.Motorcycle <= 0 || request.Car <= 0 || request.Truck <= 0)
                 return BadRequest("Os valores devem ser maiores que zero.");
 
-            var actives = await _context.PricingConfigurations
+            var actives = await _context.Pricings
                 .Where(p => p.IsActive)
                 .ToListAsync();
 
             foreach (var p in actives)
                 p.IsActive = false;
 
-            var pricing = new PricingConfiguration
+            var pricing = new Pricing
             {
                 MotorcycleHourlyRate = request.Motorcycle,
                 CarHourlyRate = request.Car,
@@ -42,7 +42,7 @@ namespace Parking.Api.Controllers
                 IsActive = true
             };
 
-            _context.PricingConfigurations.Add(pricing);
+            _context.Pricings.Add(pricing);
             await _context.SaveChangesAsync();
 
             return Ok();
@@ -52,7 +52,7 @@ namespace Parking.Api.Controllers
         [HttpGet("current")]
         public async Task<ActionResult<PricingResponse>> GetCurrent()
         {
-            var pricing = await _context.PricingConfigurations
+            var pricing = await _context.Pricings
                 .AsNoTracking()
                 .FirstOrDefaultAsync(p => p.IsActive);
 

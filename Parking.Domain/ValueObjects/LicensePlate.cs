@@ -1,8 +1,8 @@
 ﻿namespace Parking.Domain.ValueObjects;
 
-public class LicensePlate
+public sealed class LicensePlate : IEquatable<LicensePlate>
 {
-    public string Value { get; private set; }
+    public string Value { get; }
 
     protected LicensePlate() { }
 
@@ -13,4 +13,13 @@ public class LicensePlate
 
         Value = value.Trim().ToUpper();
     }
+
+    public bool Equals(LicensePlate? other)
+        => other is not null && Value == other.Value;
+
+    public override bool Equals(object? obj)
+        => Equals(obj as LicensePlate);
+
+    public override int GetHashCode()
+        => Value.GetHashCode();
 }

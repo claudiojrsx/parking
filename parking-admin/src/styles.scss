@@ -198,3 +198,11 @@ button {
   --mdc-snackbar-supporting-text-color: #fff;
 }
 
+/* Estilo Global para arredondar o Modal do Material */
+.custom-modal-container {
+  .mat-mdc-dialog-container .mdc-dialog__surface {
+    border-radius: 24px !important; /* Aqui definimos o arredondamento */
+    padding: 0 !important; /* Remove paddings extras se houver */
+    overflow: hidden; /* Garante que o conteúdo não escape das bordas */
+  }
+}

@@ -1,0 +1,73 @@
+<!-- Backdrop -->
+<div *ngIf="open" class="fixed inset-0 z-40 flex items-center justify-center
+         bg-black/30 backdrop-blur-sm">
+
+  <!-- Modal -->
+  <div class="z-50 w-full max-w-lg rounded-2xl bg-white dark:bg-slate-900 p-6
+              shadow-xl animate-modal-in">
+
+    <!-- Header -->
+    <div class="space-y-1 mb-6">
+      <h2 class="text-lg font-semibold text-slate-800 dark:text-slate-100">
+        Criar nova vaga
+      </h2>
+      <p class="text-sm text-slate-500 dark:text-slate-400">
+        Informe os dados da vaga
+      </p>
+    </div>
+
+    <!-- Form -->
+    <div class="space-y-4">
+
+      <!-- Código -->
+      <div>
+        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+          Código da vaga
+        </label>
+
+        <input type="text" [(ngModel)]="spot.code" placeholder="Ex: A-01" class="w-full rounded-xl border px-4 py-3 text-sm transition
+                 bg-white dark:bg-slate-800
+                 text-slate-700 dark:text-slate-200
+                 border-slate-200 dark:border-slate-600
+                 focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500" />
+      </div>
+
+      <!-- Tipo -->
+      <div>
+        <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+          Tipo da vaga
+        </label>
+
+        <select [(ngModel)]="spot.type" class="w-full rounded-xl border px-4 py-3 text-sm transition
+                 bg-white dark:bg-slate-800
+                 text-slate-700 dark:text-slate-200
+                 border-slate-200 dark:border-slate-600
+                 focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500">
+
+          <option [ngValue]="null" disabled>Selecione</option>
+          <option *ngFor="let type of types" [ngValue]="type">
+            {{ type }}
+          </option>
+        </select>
+      </div>
+
+    </div>
+
+    <!-- Actions -->
+    <div class="flex justify-end gap-3 pt-6">
+
+      <button (click)="close.emit()" class="rounded-xl border border-slate-300 dark:border-slate-600
+               px-4 py-2 text-sm font-medium
+               text-slate-600 dark:text-slate-300
+               hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+        Cancelar
+      </button>
+
+      <button (click)="isCreateModalOpen = true" class="rounded-xl bg-blue-600 hover:bg-blue-700
+         text-white px-6 py-3 font-semibold text-sm shadow-sm transition">
+        Nova vaga
+      </button>
+
+    </div>
+  </div>
+</div>

@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { ParkingSpotService } from '../../core/services/parking-spot.service';
 import { ParkingSpotType } from '../../core/enums/parking-spot-type.enum';
 
+import { CreateParkingSpotDialogComponent } from '../../shared/components/confirm-spot-dialog/create-parking-spot-dialog.component';
+
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -30,6 +32,7 @@ import { ParkingSpot } from '../../core/models/parking-spot.model';
     MatIconModule,
     MatButtonModule,
     MatChipsModule,
+    CreateParkingSpotDialogComponent,
   ],
   templateUrl: './parking-spots.component.html',
   styleUrls: ['./parking-spots.component.scss'],
@@ -45,6 +48,8 @@ export class ParkingSpotsComponent implements OnInit, AfterViewInit {
   newSpot = {
     code: '',
   };
+
+  isCreateModalOpen = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -78,6 +83,13 @@ export class ParkingSpotsComponent implements OnInit, AfterViewInit {
 
     this.spotService.create(payload).subscribe(() => {
       this.newSpot.code = '';
+      this.loadSpots();
+    });
+  }
+
+  handleCreateSpot(data: { code: string; type: ParkingSpotType }) {
+    this.spotService.create(data).subscribe(() => {
+      this.isCreateModalOpen = false;
       this.loadSpots();
     });
   }

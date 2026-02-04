@@ -1,6 +1,8 @@
-<div class="mb-6 p-5 space-y-6 card card-hover">
+<div class="mb-6 p-5 space-y-4 card card-hover">
 
-  <div class="flex justify-end">
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+
+    <!-- Filtros -->
     <div class="grid grid-cols-3 gap-2 w-full sm:w-auto">
       <button type="button" (click)="selectedType = ParkingSpotType.Car; loadSpots()" class="filter-btn"
         [ngClass]="{ 'filter-btn-active': selectedType === ParkingSpotType.Car }">
@@ -17,31 +19,19 @@
         🚚 Caminhão
       </button>
     </div>
-  </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
-
-    <div class="md:col-span-2">
-      <label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
-        Código da vaga
-      </label>
-
-      <input type="text" placeholder="Ex: A-01" [(ngModel)]="newSpot.code" class="w-full rounded-xl border px-4 py-3 text-sm transition
-               bg-white dark:bg-slate-800
-               text-slate-700 dark:text-slate-200
-               border-slate-200 dark:border-slate-600
-               placeholder-slate-400 dark:placeholder-slate-500
-               focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500" />
-    </div>
-
-    <div>
-      <button (click)="createSpot()" class="w-full rounded-xl bg-blue-600 hover:bg-blue-700
-               text-white py-3 mb-0.5 font-semibold text-sm shadow-sm transition">
-        Criar vaga
-      </button>
-    </div>
+    <!-- Ação principal -->
+    <button type="button" (click)="isCreateModalOpen = true" class="inline-flex items-center gap-2 rounded-xl
+             bg-blue-600 hover:bg-blue-700
+             text-white px-5 py-3
+             text-sm font-semibold
+             shadow-sm transition">
+      <mat-icon class="text-base">add</mat-icon>
+      Nova vaga
+    </button>
 
   </div>
+
 </div>
 
 <div class="overflow-hidden rounded-2xl
@@ -142,3 +132,11 @@
          bg-white dark:bg-slate-900
          shadow-sm" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
 </mat-paginator>
+
+<app-create-parking-spot-dialog
+  [open]="isCreateModalOpen"
+  [defaultType]="selectedType"
+  (close)="isCreateModalOpen = false"
+  (confirm)="handleCreateSpot($event)">
+</app-create-parking-spot-dialog>
+

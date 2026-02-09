@@ -63,9 +63,17 @@
         Cancelar
       </button>
 
-      <button (click)="isCreateModalOpen = true" class="rounded-xl bg-blue-600 hover:bg-blue-700
-         text-white px-6 py-3 font-semibold text-sm shadow-sm transition">
-        Nova vaga
+      <button (click)="isCreateModalOpen = true" class="w-fit inline-flex items-center justify-center gap-1
+         rounded-xl
+         bg-blue-600 hover:bg-blue-700
+         text-white
+         py-3 px-3
+         pr-4 pb-4
+         font-semibold
+         leading-none
+         shadow-lg transition">
+        <mat-icon class="relative top-[4px] text-[20px]">add</mat-icon>
+        <span class="leading-none">Criar vaga</span>
       </button>
 
     </div>

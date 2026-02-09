@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using Parking.Infrastructure.Context;
 
 namespace Parking.Infrastructure.Context;
 

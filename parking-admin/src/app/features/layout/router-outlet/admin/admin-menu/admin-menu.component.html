@@ -7,51 +7,24 @@
     bg-white dark:bg-slate-800
     border border-slate-200 dark:border-slate-700
   ">
-  <a routerLink="users/create" routerLinkActive="active" class="
-      flex items-center gap-2
-      px-3 py-2
-      rounded-md
-      text-slate-700 dark:text-slate-200
-      hover:bg-slate-100 dark:hover:bg-slate-700
-      transition-colors
-    ">
+
+  <a routerLink="pricing" routerLinkActive="active" class="menu-item" [routerLinkActiveOptions]="{ exact: true }">
+    <span>💰</span>
+    <span>Pricing</span>
+  </a>
+
+  <a routerLink="users/create" routerLinkActive="active" class="menu-item">
     <span>👤</span>
     <span>Usuários</span>
   </a>
 
-  <a routerLink="users" routerLinkActive="active" class="
-      flex items-center gap-2
-      px-3 py-2
-      rounded-md
-      text-slate-700 dark:text-slate-200
-      hover:bg-slate-100 dark:hover:bg-slate-700
-      transition-colors
-    ">
+  <a routerLink="users" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-item">
     <span>👥</span>
     <span>Lista de Usuários</span>
   </a>
 
-  <a routerLink="roles/create" routerLinkActive="active" class="
-      flex items-center gap-2
-      px-3 py-2
-      rounded-md
-      text-slate-700 dark:text-slate-200
-      hover:bg-slate-100 dark:hover:bg-slate-700
-      transition-colors
-    ">
+  <a routerLink="roles/create" routerLinkActive="active" class="menu-item">
     <span>🛡️</span>
     <span>Roles</span>
-  </a>
-
-  <a routerLink="pricing" routerLinkActive="active" class="
-      flex items-center gap-2
-      px-3 py-2
-      rounded-md
-      text-slate-700 dark:text-slate-200
-      hover:bg-slate-100 dark:hover:bg-slate-700
-      transition-colors
-    " [routerLinkActiveOptions]="{ exact: true }">
-    <span>💰</span>
-    <span>Pricing</span>
   </a>
 </nav>

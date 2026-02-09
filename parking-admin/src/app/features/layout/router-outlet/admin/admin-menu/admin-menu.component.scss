@@ -1,0 +1,56 @@
+nav a {
+  position: relative;
+}
+
+nav a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) scaleY(0);
+  width: 4px;
+  height: 60%;
+  border-radius: 9999px;
+  background-color: rgb(37 99 235);
+  transition: transform 200ms ease, opacity 200ms ease;
+  opacity: 0;
+}
+
+nav a.active::before {
+  transform: translateY(-50%) scaleY(1);
+  opacity: 1;
+}
+
+nav a {
+  transition:
+    background-color 200ms ease,
+    color 200ms ease,
+    transform 150ms ease;
+}
+
+nav a.active {
+  background-color: rgb(219 234 254);
+  color: rgb(29 78 216);
+  font-weight: 600;
+  transform: scale(0.97);
+}
+
+.dark nav a.active {
+  background-color: rgba(30, 58, 138, 0.4);
+  color: rgb(147 197 253);
+}
+
+.menu-item {
+  @apply
+    relative
+    flex items-center gap-2
+    px-3 py-2 pl-4
+    rounded-md
+    text-slate-700 dark:text-slate-200
+    hover:bg-slate-100 dark:hover:bg-slate-700
+    transition-colors;
+}
+
+.menu-item.active {
+  @apply font-semibold text-blue-700 dark:text-blue-300;
+}

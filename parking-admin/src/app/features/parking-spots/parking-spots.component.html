@@ -21,13 +21,17 @@
     </div>
 
     <!-- Ação principal -->
-    <button type="button" (click)="isCreateModalOpen = true" class="inline-flex items-center gap-2 rounded-xl
-             bg-blue-600 hover:bg-blue-700
-             text-white px-5 py-3
-             text-sm font-semibold
-             shadow-sm transition">
-      <mat-icon class="text-base">add</mat-icon>
-      Nova vaga
+    <button type="button" (click)="isCreateModalOpen = true" class="w-fit inline-flex items-center justify-center gap-1
+         rounded-xl
+         bg-blue-600 hover:bg-blue-700
+         text-white
+         py-3 px-3
+         pr-4 pb-4
+         font-semibold
+         leading-none
+         shadow-md transition">
+      <mat-icon class="relative top-[4px] text-[20px]">add</mat-icon>
+      <span class="leading-none">Nova vaga</span>
     </button>
 
   </div>
@@ -133,10 +137,6 @@
          shadow-sm" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
 </mat-paginator>
 
-<app-create-parking-spot-dialog
-  [open]="isCreateModalOpen"
-  [defaultType]="selectedType"
-  (close)="isCreateModalOpen = false"
-  (confirm)="handleCreateSpot($event)">
+<app-create-parking-spot-dialog [open]="isCreateModalOpen" [defaultType]="selectedType"
+  (close)="isCreateModalOpen = false" (confirm)="handleCreateSpot($event)">
 </app-create-parking-spot-dialog>
-

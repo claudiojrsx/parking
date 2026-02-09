@@ -1,16 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Parking.Domain.Entities;
+using Parking.Infrastructure.Entities;
 using Parking.Infrastructure.Seeds;
 
 namespace Parking.Infrastructure.Context;
 
-public class ParkingDbContext : DbContext
+public class ParkingDbContext(DbContextOptions<ParkingDbContext> options) : DbContext(options)
 {
-    public ParkingDbContext(DbContextOptions<ParkingDbContext> options)
-        : base(options)
-    {
-    }
-
     public DbSet<Vehicle> Vehicles => Set<Vehicle>();
     public DbSet<ParkingSpot> ParkingSpots => Set<ParkingSpot>();
     public DbSet<ParkingSession> ParkingSessions => Set<ParkingSession>();
@@ -43,6 +39,8 @@ public class ParkingDbContext : DbContext
                 Id = AuthSeed.AdminUserId
             }
         );
+
+        modelBuilder.ApplyConfiguration(new ParkingUsageConfiguration());
 
         base.OnModelCreating(modelBuilder);
     }

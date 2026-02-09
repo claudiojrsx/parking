@@ -78,9 +78,14 @@
       </div>
 
       <!-- BOTÃO -->
-      <button type="submit" [disabled]="form.invalid || loading" class="w-full bg-blue-600 hover:bg-blue-700
-                 text-white py-3 rounded-xl font-semibold
-                 shadow-sm transition disabled:opacity-50">
+      <button type="submit" [disabled]="form.invalid || loading" class="w-full inline-flex items-center justify-center gap-1
+                bg-blue-600 hover:bg-blue-700
+                text-white
+                py-3 px-3
+                pr-4 pb-4 pl-5
+                rounded-xl
+                font-semibold
+                shadow-lg transition disabled:opacity-50">
         Criar Usuário
       </button>
 

@@ -1,12 +1,14 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+
 import { ParkingSpotType } from '../../../core/enums/parking-spot-type.enum';
 
 @Component({
   selector: 'app-create-parking-spot-dialog',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MatIconModule],
   templateUrl: './create-parking-spot-dialog.component.html',
 })
 export class CreateParkingSpotDialogComponent {

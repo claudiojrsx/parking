@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Parking.Application.DTOs;
+﻿using Parking.Application.DTOs;
 using Parking.Application.Interfaces.Repositories;
 using Parking.Domain.Entities;
 using Parking.Domain.Enums;
@@ -53,8 +52,8 @@ public class ParkingService(
         }
 
         // Busca vaga disponível
-        var spot = await _spotRepo.GetAvailableAsync((ParkingSpotType)type)
-            ?? throw new InvalidOperationException("Não há vagas disponíveis para este tipo de veículo.");
+        var spot = await _spotRepo.GetAvailableAsync(vehicle.Type.ToParkingSpotType())
+            ?? throw new InvalidOperationException("Nenhuma vaga disponível para este tipo de veículo.");
 
         spot.Occupy();
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Parking.Application.Interfaces.Repositories;
 using Parking.Domain.Entities;
+using Parking.Domain.Enums;
 using Parking.Domain.ValueObjects;
 using Parking.Infrastructure.Context;
 
@@ -35,5 +36,27 @@ public class PricingRepository : IPricingRepository
     {
         _context.Pricings.Add(pricing);
         await _context.SaveChangesAsync();
+    }
+
+    public async Task<decimal> CalculateAsync(VehicleType type, DateTime entry, DateTime exit)
+    {
+        var pricing = await _context.Pricings
+            .AsNoTracking()
+            .FirstOrDefaultAsync(p => p.IsActive);
+
+        if (pricing is null)
+            throw new InvalidOperationException("Active pricing not found");
+
+        var totalHours = Math.Ceiling((exit - entry).TotalHours);
+
+        decimal hourlyRate = type switch
+        {
+            VehicleType.Motorcycle => pricing.MotorcycleHourlyRate,
+            VehicleType.Car => pricing.CarHourlyRate,
+            VehicleType.Truck => pricing.TruckHourlyRate,
+            _ => throw new ArgumentOutOfRangeException(nameof(type))
+        };
+
+        return (decimal)totalHours * hourlyRate;
     }
 }

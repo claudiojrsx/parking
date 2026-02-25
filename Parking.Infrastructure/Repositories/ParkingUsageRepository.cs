@@ -45,4 +45,13 @@ public class ParkingUsageRepository : IParkingUsageRepository
         _context.ParkingUsages.Update(usage);
         await _context.SaveChangesAsync();
     }
+
+    public async Task<List<ParkingUsage>> GetAllActiveAsync()
+    {
+        return await _context.ParkingUsages
+            .Include(x => x.Vehicle)
+            .Include(x => x.ParkingSpot)
+            .Where(x => x.IsActive)
+            .ToListAsync();
+    }
 }

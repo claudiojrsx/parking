@@ -105,6 +105,14 @@ export const routes: Routes = [
                 (m) => m.ParkingCheckOutComponent,
               ),
           },
+          {
+            path: 'daily',
+            data: { breadcrumb: 'Daily' },
+            loadComponent: () =>
+              import('./features/daily-parking/daily-parking.component').then(
+                (m) => m.DailyParkingComponent,
+              ),
+          },
         ],
       },
       {

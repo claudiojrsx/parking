@@ -5,7 +5,7 @@ namespace Parking.Application.Interfaces.Repositories
 {
     public interface IPricingRepository
     {
-        decimal Calculate(VehicleType type, DateTime value1, DateTime value2);
+        Task<decimal> CalculateAsync(VehicleType type, DateTime entry, DateTime exit);
         Task<HourlyRate> GetCurrentRateAsync();
     }
 }

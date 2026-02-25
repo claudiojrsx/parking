@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Parking.Application.Interfaces.Repositories;
 using Parking.Application.Interfaces.Security;
+using Parking.Application.Interfaces.Services;
 using Parking.Application.Services;
 using Parking.Infrastructure.Context;
 using Parking.Infrastructure.Repositories;
@@ -39,6 +40,9 @@ builder.Services.AddScoped<IParkingSessionRepository, ParkingSessionRepository>(
 builder.Services.AddScoped<IPricingRepository, PricingRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+builder.Services.AddScoped<IDailyParkingService, DailyParkingService>();
+builder.Services.AddScoped<IParkingUsageRepository, ParkingUsageRepository>();
+builder.Services.AddScoped<IPricingService, PricingService>();
 builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 
 builder.Services.AddScoped<ParkingService>();

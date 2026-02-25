@@ -1,17 +1,28 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Parking.Application.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Parking.Api.Auth;
+using Parking.Api.DTOs;
+using Parking.Application.Interfaces.Services;
 
 namespace Parking.Api.Controllers;
 
+[Authorize(Roles = $"{Roles.Admin}")]
 [ApiController]
 [Route("api/parking/daily")]
 public class DailyParkingController : ControllerBase
 {
-    private readonly DailyParkingService _service;
+    private readonly IDailyParkingService _service;
 
-    public DailyParkingController(DailyParkingService service)
+    public DailyParkingController(IDailyParkingService service)
     {
         _service = service;
+    }
+
+    [HttpPost("entry")]
+    public async Task<IActionResult> EntryByPlate([FromBody] CheckInRequest request)
+    {
+        var usage = await _service.RegisterEntryAsync(request.Plate, request.VehicleType);
+        return Ok(usage);
     }
 
     [HttpPost("entry/{vehicleId}")]
@@ -26,5 +37,13 @@ public class DailyParkingController : ControllerBase
     {
         var result = await _service.RegisterExitAsync(usageId);
         return Ok(result);
+    }
+
+    [Authorize(Roles = $"{Roles.Admin},{Roles.Operator}")]
+    [HttpGet("active")]
+    public async Task<IActionResult> GetActive()
+    {
+        var active = await _service.GetActiveAsync();
+        return Ok(active);
     }
 }

@@ -20,12 +20,15 @@ export class CreateParkingSpotDialogComponent {
   @Output() confirm = new EventEmitter<{ code: string; type: ParkingSpotType }>();
   @Output() close = new EventEmitter<void>();
 
-  types = Object.values(ParkingSpotType);
+  types = Object.values(ParkingSpotType)
+  .filter(value => typeof value === 'number');
 
   spot = {
     code: '',
     type: null as ParkingSpotType | null,
   };
+
+ParkingSpotType = ParkingSpotType;
 
   ngOnChanges() {
     this.spot.type = this.defaultType;

@@ -1,12 +1,7 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Dev\\parking\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{A59532B9-B875-1A4C-B7C0-E9E2F7D566A4}|Parking.Application\\Parking.Application.csproj|c:\\dev\\parking\\parking.application\\services\\dailyparkingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A59532B9-B875-1A4C-B7C0-E9E2F7D566A4}|Parking.Application\\Parking.Application.csproj|solutionrelative:parking.application\\services\\dailyparkingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\Parking\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -16,10 +11,6 @@
           "DockedWidth": 183,
           "SelectedChildIndex": -1,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{809f6ff3-8092-454a-8003-6d4091f9b5bb}"
@@ -87,25 +78,10 @@
             {
               "$type": "Bookmark",
               "Name": "ST:11:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 191,
-          "SelectedChildIndex": 0,
-          "Children": [
+            },
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DailyParkingService.cs",
-              "DocumentMoniker": "C:\\Dev\\parking\\Parking.Application\\Services\\DailyParkingService.cs",
-              "RelativeDocumentMoniker": "Parking.Application\\Services\\DailyParkingService.cs",
-              "ToolTip": "C:\\Dev\\parking\\Parking.Application\\Services\\DailyParkingService.cs",
-              "RelativeToolTip": "Parking.Application\\Services\\DailyParkingService.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAxwC0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-08T00:25:33.741Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             }
           ]
         }

@@ -7,7 +7,7 @@ namespace Parking.Application.Interfaces.Repositories
         Task<ParkingUsage?> GetActiveByVehicleAsync(Guid vehicleId);
         Task<ParkingUsage?> GetActiveBySpotAsync(Guid parkingSpotId);
         Task<ParkingUsage?> GetByIdAsync(Guid id);
-
+        Task<List<ParkingUsage>> GetAllActiveAsync();
         Task AddAsync(ParkingUsage usage);
         Task UpdateAsync(ParkingUsage usage);
     }

@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Parking.Domain.Entities;
-using Parking.Infrastructure.Entities;
 using Parking.Infrastructure.Seeds;
 
 namespace Parking.Infrastructure.Context;
@@ -13,6 +12,7 @@ public class ParkingDbContext(DbContextOptions<ParkingDbContext> options) : DbCo
     public DbSet<Pricing> Pricings => Set<Pricing>();
     public DbSet<User> Users => Set<User>();
     public DbSet<Role> Roles => Set<Role>();
+    public DbSet<ParkingUsage> ParkingUsages => Set<ParkingUsage>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -39,8 +39,6 @@ public class ParkingDbContext(DbContextOptions<ParkingDbContext> options) : DbCo
                 Id = AuthSeed.AdminUserId
             }
         );
-
-        modelBuilder.ApplyConfiguration(new ParkingUsageConfiguration());
 
         base.OnModelCreating(modelBuilder);
     }

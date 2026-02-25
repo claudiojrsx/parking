@@ -3,6 +3,7 @@ using Parking.Application.Interfaces.Repositories;
 using Parking.Application.Interfaces.Services;
 using Parking.Domain.Entities;
 using Parking.Domain.Enums;
+using Parking.Domain.ValueObjects;
 
 namespace Parking.Application.Services;
 
@@ -24,14 +25,32 @@ public class DailyParkingService(
     IParkingUsageRepository usageRepo,
     IParkingSpotRepository spotRepo,
     IVehicleRepository vehicleRepo,
-    IPricingService pricingService)
+    IPricingService pricingService) : IDailyParkingService
 {
     private readonly IParkingUsageRepository _usageRepo = usageRepo;
     private readonly IParkingSpotRepository _spotRepo = spotRepo;
     private readonly IVehicleRepository _vehicleRepo = vehicleRepo;
     private readonly IPricingService _pricingService = pricingService;
 
-    // ENTRADA
+    public async Task<ParkingUsage> RegisterEntryAsync(string plate, VehicleType type)
+    {
+        if (string.IsNullOrWhiteSpace(plate))
+            throw new InvalidOperationException("Placa inválida.");
+
+        var plateNormalized = plate.Trim().ToUpperInvariant();
+        var licensePlate = new LicensePlate(plateNormalized);
+
+        var vehicle = await _vehicleRepo.GetByLicensePlateAsync(licensePlate);
+
+        if (vehicle is null)
+        {
+            vehicle = new Vehicle(licensePlate, type);
+            await _vehicleRepo.AddAsync(vehicle);
+        }
+
+        return await RegisterEntryAsync(vehicle.Id);
+    }
+
     public async Task<ParkingUsage> RegisterEntryAsync(Guid vehicleId)
     {
         var vehicle = await _vehicleRepo.GetByIdAsync(vehicleId)
@@ -59,7 +78,6 @@ public class DailyParkingService(
         return usage;
     }
 
-    // SAÍDA
     public async Task<ParkingExitResult> RegisterExitAsync(Guid usageId)
     {
         var usage = await _usageRepo.GetByIdAsync(usageId)
@@ -87,5 +105,19 @@ public class DailyParkingService(
             usage.EntryTime.Value,
             usage.ExitTime.Value
         );
+    }
+
+    public async Task<List<ActiveParkingSessionDto>> GetActiveAsync()
+    {
+        var usages = await _usageRepo.GetAllActiveAsync();
+
+        return [.. usages.Select(u => new ActiveParkingSessionDto
+        {
+            SessionId = u.Id,
+            VehicleId = u.Vehicle.Id,
+            Plate = u.Vehicle.LicensePlate.Value,
+            VehicleType = u.Vehicle.Type,
+            CheckInAt = u.EntryTime!.Value
+        })];
     }
 }

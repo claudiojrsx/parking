@@ -164,6 +164,64 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Parking.Api.Controllers.DailyParkingController",
+    "Method": "GetActive",
+    "RelativePath": "api/parking/daily/active",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Parking.Api.Controllers.DailyParkingController",
+    "Method": "EntryByPlate",
+    "RelativePath": "api/parking/daily/entry",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Parking.Api.DTOs.CheckInRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Parking.Api.Controllers.DailyParkingController",
+    "Method": "Entry",
+    "RelativePath": "api/parking/daily/entry/{vehicleId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "vehicleId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Parking.Api.Controllers.DailyParkingController",
+    "Method": "Exit",
+    "RelativePath": "api/parking/daily/exit/{usageId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usageId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Parking.Api.Controllers.ParkingController",
     "Method": "GetActiveSessions",
     "RelativePath": "api/parking/sessions/active",

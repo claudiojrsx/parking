@@ -72,6 +72,48 @@ namespace Parking.Infrastructure.Migrations
                     b.ToTable("ParkingSpots", (string)null);
                 });
 
+            modelBuilder.Entity("Parking.Domain.Entities.ParkingUsage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("EntryTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ExitTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("ParkingSpotId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UsageType")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("VehicleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParkingSpotId", "IsActive");
+
+                    b.HasIndex("VehicleId", "IsActive");
+
+                    b.ToTable("ParkingUsages", (string)null);
+                });
+
             modelBuilder.Entity("Parking.Domain.Entities.Pricing", b =>
                 {
                     b.Property<Guid>("Id")
@@ -196,6 +238,25 @@ namespace Parking.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Vehicles", (string)null);
+                });
+
+            modelBuilder.Entity("Parking.Domain.Entities.ParkingUsage", b =>
+                {
+                    b.HasOne("Parking.Domain.Entities.ParkingSpot", "ParkingSpot")
+                        .WithMany()
+                        .HasForeignKey("ParkingSpotId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Parking.Domain.Entities.Vehicle", "Vehicle")
+                        .WithMany()
+                        .HasForeignKey("VehicleId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("ParkingSpot");
+
+                    b.Navigation("Vehicle");
                 });
 
             modelBuilder.Entity("Parking.Domain.Entities.User", b =>

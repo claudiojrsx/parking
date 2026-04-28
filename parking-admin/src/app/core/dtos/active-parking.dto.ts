@@ -1,5 +1,5 @@
 export interface ActiveParkingDto {
-  id: string;
+  usageId: string;
   vehiclePlate: string;
   vehicleType: string;
   entryTime: string;

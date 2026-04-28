@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { ActiveParkingDto } from '../dtos/active-parking.dto';
+import { DailyActiveParkingDto } from '../dtos/daily-parking.dto';
 import { CheckInRequest } from '../dtos/check-in-request';
 import { VehicleType } from '../enums/vehicle-type.enum';
 
@@ -26,7 +26,7 @@ export class DailyParkingService {
     return this.http.post<number>(`${this.baseUrl}/exit/${usageId}`, {});
   }
 
-  getActive(): Observable<ActiveParkingDto[]> {
-    return this.http.get<ActiveParkingDto[]>(`${this.baseUrl}/active`);
+  getActive(): Observable<DailyActiveParkingDto[]> {
+    return this.http.get<DailyActiveParkingDto[]>(`${this.baseUrl}/active`);
   }
 }

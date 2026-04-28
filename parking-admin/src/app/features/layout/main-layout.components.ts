@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -35,6 +35,10 @@ export class MainLayoutComponent {
   isDarkMode = false;
 
   ngOnInit(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
     const storedTheme = localStorage.getItem('theme');
 
     if (storedTheme) {
@@ -54,7 +58,13 @@ export class MainLayoutComponent {
     this.applyTheme();
   }
 
+  private platformId = inject(PLATFORM_ID);
+
   private applyTheme(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
     const html = document.documentElement;
 
     if (this.isDarkMode) {

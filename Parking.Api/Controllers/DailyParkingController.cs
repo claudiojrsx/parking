@@ -6,7 +6,7 @@ using Parking.Application.Interfaces.Services;
 
 namespace Parking.Api.Controllers;
 
-[Authorize(Roles = $"{Roles.Admin}")]
+[Authorize]
 [ApiController]
 [Route("api/parking/daily")]
 public class DailyParkingController : ControllerBase
@@ -18,6 +18,7 @@ public class DailyParkingController : ControllerBase
         _service = service;
     }
 
+    [Authorize(Roles = $"{Roles.Admin}")]
     [HttpPost("entry")]
     public async Task<IActionResult> EntryByPlate([FromBody] CheckInRequest request)
     {
@@ -25,6 +26,7 @@ public class DailyParkingController : ControllerBase
         return Ok(usage);
     }
 
+    [Authorize(Roles = $"{Roles.Admin}")]
     [HttpPost("entry/{vehicleId}")]
     public async Task<IActionResult> Entry(Guid vehicleId)
     {
@@ -32,6 +34,7 @@ public class DailyParkingController : ControllerBase
         return Ok(usage);
     }
 
+    [Authorize(Roles = $"{Roles.Admin},{Roles.Operator}")]
     [HttpPost("exit/{usageId}")]
     public async Task<IActionResult> Exit(Guid usageId)
     {
